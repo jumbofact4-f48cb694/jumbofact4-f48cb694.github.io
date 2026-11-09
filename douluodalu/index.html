@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>斗罗大陆四瓜子漫画 - 漫画条目与更新追踪</title>
+<meta name="description" content="斗罗大陆四瓜子漫画是斗罗大陆第四部漫画的阅读与条目追踪页面，汇总章节更新、角色解析、剧情梳理、分类索引与读者讨论，适合追更斗罗大陆四瓜子漫画的读者按需查找。">
+<meta name="keywords" content="斗罗大陆第四部, 龙王传说漫画, 唐舞麟, 古月娜, 史莱克七怪">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a1f3d'/%3E%3Cpath d='M18 44c6-20 12-20 14 0 2-20 8-20 14 0' fill='none' stroke='%23ffb347' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='22' r='6' fill='%23ff6b6b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f4f1ec;
+  --panel:#ffffff;
+  --ink:#1e2030;
+  --ink-soft:#4e5166;
+  --muted:#7c7f94;
+  --line:#e3ded6;
+  --brand:#1a1f3d;
+  --brand-2:#2c3566;
+  --accent:#ff6b6b;
+  --accent-2:#ffb347;
+  --gold:#c9a227;
+  --teal:#2f8f83;
+  --radius:14px;
+  --radius-sm:8px;
+  --shadow:0 6px 24px rgba(26,31,61,.08);
+  --shadow-sm:0 2px 8px rgba(26,31,61,.06);
+  --maxw:1320px;
+  --sticky-h:104px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--sticky-h)}
+body{
+  margin:0;font-family:var(--font);background:var(--bg);color:var(--ink);
+  line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1em;padding-left:1.25em}
+button{font-family:inherit}
+
+/* ===== 吸顶公告条 + 页头 ===== */
+.sticky-top{
+  position:sticky;top:0;z-index:100;
+  background:var(--panel);
+  box-shadow:0 1px 0 var(--line),0 4px 18px rgba(26,31,61,.06);
+}
+.announce{
+  background:linear-gradient(90deg,var(--brand),var(--brand-2));
+  color:#fff;font-size:.86rem;padding:8px 0;
+}
+.announce .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:center;justify-content:center;text-align:center}
+.announce strong{color:var(--accent-2)}
+.announce .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:6px;vertical-align:middle}
+
+.site-header{padding:10px 0}
+.header-row{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.65rem;min-width:0}
+.brand svg{flex:0 0 auto}
+.brand-text{font-size:1.32rem;font-weight:800;letter-spacing:.5px;color:var(--brand);white-space:nowrap}
+.main-nav{display:flex;flex-wrap:wrap;gap:.25rem .9rem;margin-left:auto;font-size:.92rem}
+.main-nav a{color:var(--ink-soft);padding:4px 2px;border-bottom:2px solid transparent}
+.main-nav a:hover{color:var(--brand);border-bottom-color:var(--accent);text-decoration:none}
+.quick-search{display:flex;align-items:center;gap:.4rem}
+.quick-search input{
+  border:1px solid var(--line);border-radius:999px;padding:.42rem .9rem;font-size:.88rem;
+  width:170px;background:#fbfaf8;color:var(--ink);
+}
+.quick-search input:focus{outline:2px solid var(--accent-2);outline-offset:1px;border-color:transparent}
+.quick-search button{
+  border:none;background:var(--brand);color:#fff;border-radius:999px;
+  padding:.42rem .9rem;font-size:.85rem;cursor:pointer;white-space:nowrap;
+}
+.quick-search button:hover{background:var(--brand-2)}
+
+/* ===== 布局容器 ===== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;
+  padding:28px 0 48px;align-items:start;
+}
+main{min-width:0}
+aside{min-width:0}
+
+/* ===== 首屏 ===== */
+.hero{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  background:linear-gradient(135deg,#1a1f3d 0%,#2c3566 58%,#3b2f5e 100%);
+  color:#fff;padding:38px 34px;margin-bottom:30px;box-shadow:var(--shadow);
+}
+.hero::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(255,179,71,.28),transparent 68%);pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:640px}
+.hero h1{font-size:2.3rem;letter-spacing:1px;margin-bottom:.5rem}
+.hero .sub{color:#ffd9a8;font-size:1rem;font-weight:600;margin-bottom:.7rem}
+.hero p{color:#dfe1f2;font-size:.96rem;max-width:560px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem}
+.btn{
+  display:inline-block;border-radius:999px;padding:.55rem 1.25rem;font-size:.9rem;
+  font-weight:600;border:1px solid transparent;cursor:pointer;transition:.18s;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#ff5252;text-decoration:none}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.12);text-decoration:none}
+.hero-art{
+  position:absolute;right:24px;bottom:-10px;width:240px;opacity:.9;z-index:1;
+  pointer-events:none;
+}
+
+/* ===== 通用板块 ===== */
+.section{
+  background:var(--panel);border-radius:var(--radius);padding:26px 26px 22px;
+  margin-bottom:26px;box-shadow:var(--shadow-sm);border:1px solid var(--line);
+}
+.section-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  flex-wrap:wrap;margin-bottom:1.1rem;
+  padding-bottom:.7rem;border-bottom:2px solid var(--bg);
+}
+.section-head h2{font-size:1.28rem;color:var(--brand);display:flex;align-items:center;gap:.5rem}
+.section-head h2::before{
+  content:"";width:6px;height:20px;border-radius:3px;background:var(--accent);
+  display:inline-block;
+}
+.section-head .more{font-size:.84rem;color:var(--muted);white-space:nowrap}
+.section-head .more a{color:var(--brand-2)}
+.lead{color:var(--ink-soft);font-size:.94rem;margin-bottom:1.1rem}
+.tag{
+  display:inline-block;font-size:.72rem;padding:.14rem .55rem;border-radius:999px;
+  background:#f0eee9;color:var(--ink-soft);margin:0 .28rem .28rem 0;white-space:nowrap;
+}
+.tag-accent{background:#ffe9e9;color:#c23b3b}
+.tag-gold{background:#fbf1d8;color:#8a6d0a}
+.tag-teal{background:#e2f2ef;color:#1f6b62}
+
+/* 网格卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;
+  background:#fff;display:flex;flex-direction:column;transition:.18s;
+}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.card img{width:100%;height:150px;object-fit:cover;background:#e8e4dc}
+.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.card-body h3{font-size:.98rem;color:var(--brand)}
+.card-body .desc{font-size:.82rem;color:var(--ink-soft);flex:1}
+.card-meta{display:flex;flex-wrap:wrap;gap:.4rem;font-size:.74rem;color:var(--muted);align-items:center;margin-top:.2rem}
+.card-meta .hot{color:var(--accent);font-weight:700}
+
+/* 紧凑列表 */
+.tight-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.1rem}
+.tight-list li{
+  display:flex;gap:.8rem;align-items:baseline;padding:.62rem 0;
+  border-bottom:1px dashed var(--line);font-size:.9rem;
+}
+.tight-list li:last-child{border-bottom:none}
+.tight-list .idx{
+  flex:0 0 26px;text-align:center;font-weight:800;color:var(--accent);
+  font-size:.86rem;
+}
+.tight-list .name{font-weight:600;color:var(--brand);white-space:nowrap}
+.tight-list .name a{color:var(--brand)}
+.tight-list .brief{color:var(--muted);font-size:.82rem;flex:1;min-width:0}
+.tight-list .time{color:var(--muted);font-size:.78rem;white-space:nowrap}
+
+/* 分类入口 */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.cat-item{
+  display:block;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:14px 14px 12px;background:#fbfaf8;transition:.18s;
+}
+.cat-item:hover{border-color:var(--accent-2);background:#fff;text-decoration:none;box-shadow:var(--shadow-sm)}
+.cat-item strong{display:block;font-size:.95rem;color:var(--brand);margin-bottom:.2rem}
+.cat-item span{font-size:.76rem;color:var(--muted)}
+
+/* 深度正文 */
+.prose h3{font-size:1.06rem;color:var(--brand);margin:1.4rem 0 .5rem}
+.prose h3:first-child{margin-top:0}
+.prose p{font-size:.94rem;color:var(--ink-soft)}
+.prose ul{font-size:.93rem;color:var(--ink-soft)}
+.prose li{margin-bottom:.35rem}
+.prose .callout{
+  background:#fbf7ee;border-left:4px solid var(--accent-2);padding:.8rem 1rem;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.9rem;color:var(--ink-soft);
+  margin:1rem 0;
+}
+
+/* FAQ */
+details{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:.1rem .9rem;
+  margin-bottom:.6rem;background:#fbfaf8;
+}
+details[open]{background:#fff;border-color:#f0d9b5}
+summary{
+  cursor:pointer;padding:.7rem 0;font-weight:600;font-size:.92rem;color:var(--brand);
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--accent);font-weight:700;flex:0 0 auto}
+details[open] summary::after{content:"－"}
+details .ans{padding:.1rem 0 .8rem;font-size:.88rem;color:var(--ink-soft)}
+
+/* 评论 */
+.comment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.comment{
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;
+  background:#fbfaf8;font-size:.86rem;
+}
+.comment .who{display:flex;justify-content:space-between;gap:.5rem;margin-bottom:.35rem;font-size:.8rem}
+.comment .who b{color:var(--brand-2)}
+.comment .who time{color:var(--muted)}
+.comment p{margin:0;color:var(--ink-soft)}
+
+/* 资讯 */
+.news-list{display:flex;flex-direction:column;gap:14px}
+.news-item{
+  display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;
+  padding-bottom:14px;border-bottom:1px dashed var(--line);
+}
+.news-item:last-child{border-bottom:none;padding-bottom:0}
+.news-item img{width:120px;height:80px;object-fit:cover;border-radius:var(--radius-sm);background:#e8e4dc}
+.news-item h3{font-size:.94rem;color:var(--brand);margin-bottom:.2rem}
+.news-item .date{font-size:.76rem;color:var(--accent);font-weight:700;margin-bottom:.2rem;display:block}
+.news-item p{font-size:.83rem;color:var(--muted);margin:0}
+
+/* 相关推荐标签 */
+.tag-index{display:flex;flex-wrap:wrap;gap:.55rem}
+.tag-index a{
+  display:inline-block;border:1px solid var(--line);border-radius:999px;
+  padding:.3rem .85rem;font-size:.84rem;color:var(--ink-soft);background:#fbfaf8;
+}
+.tag-index a:hover{border-color:var(--accent-2);color:var(--brand);background:#fff;text-decoration:none}
+
+/* 榜单 */
+.rank-list{list-style:none;padding:0;margin:0;counter-reset:rk}
+.rank-list li{
+  display:flex;gap:.7rem;align-items:center;padding:.6rem 0;border-bottom:1px dashed var(--line);
+  font-size:.9rem;
+}
+.rank-list li:last-child{border-bottom:none}
+.rank-list .n{
+  flex:0 0 24px;height:24px;border-radius:6px;background:#f0eee9;color:var(--ink-soft);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.76rem;
+}
+.rank-list li:nth-child(1) .n{background:var(--accent);color:#fff}
+.rank-list li:nth-child(2) .n{background:var(--accent-2);color:#3a2c00}
+.rank-list li:nth-child(3) .n{background:var(--gold);color:#fff}
+.rank-list .t{flex:1;min-width:0;font-weight:600;color:var(--brand)}
+.rank-list .s{color:var(--muted);font-size:.78rem;white-space:nowrap}
+
+/* 侧栏 */
+.side-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 16px;margin-bottom:22px;box-shadow:var(--shadow-sm);
+}
+.side-card h2{
+  font-size:1rem;color:var(--brand);margin-bottom:.9rem;padding-bottom:.55rem;
+  border-bottom:2px solid var(--bg);display:flex;align-items:center;gap:.45rem;
+}
+.side-card h2::before{content:"";width:5px;height:16px;border-radius:3px;background:var(--teal);display:inline-block}
+.side-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.1rem}
+.side-list li{padding:.45rem 0;border-bottom:1px dashed var(--line);font-size:.86rem}
+.side-list li:last-child{border-bottom:none}
+.side-list .name{font-weight:600;color:var(--brand);display:block}
+.side-list .meta{font-size:.76rem;color:var(--muted)}
+
+/* 页尾 */
+.site-footer{
+  background:var(--brand);color:#c8cbe0;padding:40px 0 24px;font-size:.86rem;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;
+  padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.site-footer h3{color:#fff;font-size:.95rem;margin-bottom:.7rem}
+.site-footer a{color:#c8cbe0}
+.site-footer a:hover{color:#fff}
+.site-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.35rem}
+.footer-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem;color:#fff;font-weight:800;font-size:1.1rem}
+.footer-note{
+  padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;
+  color:#9da2c0;font-size:.78rem;
+}
+
+/* 搜索反馈 */
+#searchFeedback{
+  display:none;background:#fff4e5;border:1px solid #f0d9b5;color:#8a5a00;
+  border-radius:var(--radius-sm);padding:.6rem .9rem;font-size:.86rem;margin-bottom:1rem;
+}
+#searchFeedback.show{display:block}
+.search-hit{outline:3px solid var(--accent-2);outline-offset:2px;border-radius:var(--radius-sm)}
+.is-hidden{display:none !important}
+
+@media (max-width:1024px){
+  .layout{grid-template-columns:1fr}
+  aside{order:2}
+  .hero-art{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .main-nav{margin-left:0}
+}
+@media (max-width:740px){
+  .hero{padding:28px 20px}
+  .hero h1{font-size:1.7rem}
+  .section{padding:20px 16px 16px}
+  .quick-search input{width:130px}
+  .news-item{grid-template-columns:1fr}
+  .news-item img{width:100%;height:150px}
+  .footer-grid{grid-template-columns:1fr}
+  .brand-text{font-size:1.05rem;white-space:normal}
+  .sticky-top{position:sticky}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div class="announce">
+    <div class="wrap">
+      <span><span class="dot"></span><strong>11 月 8 日</strong> 龙王传说漫画第 412 话「金龙九转」更新</span>
+      <span>本周新增 <strong>12</strong> 条角色档案与 3 篇剧情梳理</span>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <div class="brand">
+        <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1a1f3d"/>
+          <path d="M18 44c6-20 12-20 14 0 2-20 8-20 14 0" fill="none" stroke="#ffb347" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="32" cy="22" r="6" fill="#ff6b6b"/>
+        </svg>
+        <span class="brand-text">斗罗大陆四瓜子漫画</span>
+      </div>
+      <nav class="main-nav" aria-label="主题导航">
+        <a href="/#gaishu">领域概览</a>
+        <a href="/#jingxuan">精选条目</a>
+        <a href="/#gengxin">更新动态</a>
+        <a href="/#fenlei">分类索引</a>
+        <a href="/#shenfen">深度解析</a>
+        <a href="/#zhinan">阅读路径</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#pinglun">读者评论</a>
+      </nav>
+      <div class="quick-search">
+        <label for="searchInput" class="visually-hidden" style="position:absolute;left:-9999px">搜索条目</label>
+        <input id="searchInput" type="search" placeholder="搜索条目或角色…" autocomplete="off">
+        <button id="searchBtn" type="button">查找</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-inner">
+      <p class="sub">龙王传说 · 第四部漫画阅读与条目索引</p>
+      <h1 id="heroTitle">斗罗大陆四瓜子漫画</h1>
+      <p>汇集《斗罗大陆第四部：龙王传说》漫画的章节更新、唐舞麟与古月娜角色线、史莱克七怪重组、魂师大赛赛程与关键剧情解析，按阅读顺序与条目类型整理，方便追更读者快速定位内容。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/#gengxin">查看今日更新</a>
+        <a class="btn btn-ghost" href="/#jingxuan">浏览精选条目</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 240 200" aria-hidden="true">
+      <circle cx="160" cy="70" r="52" fill="none" stroke="#ffb347" stroke-width="2" opacity=".55"/>
+      <circle cx="160" cy="70" r="34" fill="none" stroke="#ff6b6b" stroke-width="2" opacity=".6"/>
+      <path d="M40 170 Q120 90 200 170" fill="none" stroke="#8f9bff" stroke-width="3" opacity=".5"/>
+      <circle cx="120" cy="118" r="9" fill="#ffb347"/>
+      <circle cx="70" cy="150" r="5" fill="#ff6b6b"/>
+      <circle cx="196" cy="150" r="5" fill="#8f9bff"/>
+    </svg>
+  </section>
+
+  <div class="layout">
+
+    <main>
+
+      <!-- 1. 主题领域概览 -->
+      <section class="section" id="gaishu" aria-labelledby="gaishuTitle">
+        <div class="section-head">
+          <h2 id="gaishuTitle">斗罗大陆第四部漫画的世界观与内容方向</h2>
+          <span class="more">约 420 字</span>
+        </div>
+        <p>斗罗大陆四瓜子漫画指向的是《斗罗大陆》系列的第四部漫画改编《龙王传说》。它在时间线上延续唐三之后的故事，把舞台交给唐门与史莱克学院的新一代。与前三部相比，第四部的核心变化在于魂导科技体系全面成熟，魂师与魂导师两条成长路线并行，战斗方式从单纯的魂技对轰转向装备、战术与个人天赋的混合比拼。</p>
+        <p>从内容方向上看，读者常关注的几条线比较清晰。第一条是唐舞麟的个人成长：从东海学院旁听生到史莱克七怪队长，他的金龙王血脉、蓝银皇觉醒与身体极限训练贯穿始终。第二条是古月娜与唐舞麟的关系推进，涉及魂兽与人类之间的立场冲突。第三条是史莱克七怪的重组过程，包括原恩夜辉、叶星澜、谢邂、徐笠智、许小言、乐正宇各自的定位。第四条是魂师大赛与战神殿对抗等竞技段落，节奏快、矛盾集中，适合想先看高密度战斗的读者。</p>
+        <p>第四部还引入了龙王传说特有的设定：魂灵体系、斗铠锻造、血神军团、圣灵教与深渊位面的层层推进。这些设定让剧情中后期从学院日常转向战争叙事，读者如果按章节顺序追更，会明显感到叙事重心的迁移。</p>
+        <p>当前值得关注的具体内容集中在几处：龙王传说漫画第 412 话附近的「金龙九转」剧情、唐舞麟与古月娜在冰火两仪眼的对手戏、史莱克七怪对战战神殿的赛程节点，以及蓝轩宇父辈线索的埋设。这些条目既是追更读者的讨论焦点，也是新读者判断是否入坑的参考坐标。</p>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="jingxuan" aria-labelledby="jingxuanTitle">
+        <div class="section-head">
+          <h2 id="jingxuanTitle">精选条目推荐</h2>
+          <span class="more">按热度与讨论度整理</span>
+        </div>
+        <div class="card-grid">
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-longwang01/400/300" alt="龙王传说漫画金龙九转封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>龙王传说漫画第 412 话「金龙九转」</h3>
+              <div class="desc">唐舞麟在极限训练中触发金龙王第七层封印，血脉反噬与魂力控制同时爆发，本话集中处理他如何用蓝银皇的柔韧化解刚猛力量。</div>
+              <div class="card-meta"><span class="tag tag-accent">主线更新</span><span class="tag">血脉</span><span class="tag">战斗</span><span class="hot">热度 98</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-guyuena02/400/300" alt="古月娜与唐舞麟对手戏场景" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>古月娜·冰火两仪眼对峙段</h3>
+              <div class="desc">古月娜在冰火两仪眼表明魂兽立场，唐舞麟夹在人类与魂兽之间两难。这段是第四部情感线与立场冲突的交叉点，对白密度高。</div>
+              <div class="card-meta"><span class="tag tag-teal">角色线</span><span class="tag">魂兽</span><span class="tag">情感</span><span class="hot">热度 95</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-shilaike03/400/300" alt="史莱克七怪重组阵容" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>史莱克七怪重组阵容</h3>
+              <div class="desc">唐舞麟、原恩夜辉、叶星澜、谢邂、徐笠智、许小言、乐正宇七人首次以完整阵容出战，位置分工与配合模式在这一段定型。</div>
+              <div class="card-meta"><span class="tag tag-gold">团队</span><span class="tag">七怪</span><span class="tag">群像</span><span class="hot">热度 92</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-douKai04/400/300" alt="斗铠锻造与魂导科技设定" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>斗铠锻造与魂导科技设定</h3>
+              <div class="desc">第四部把斗铠分为一字斗铠至四字斗铠等级，锻造依赖稀有金属与魂导师配合。这段解释唐舞麟为何要兼修锻造。</div>
+              <div class="card-meta"><span class="tag">设定</span><span class="tag">斗铠</span><span class="tag">魂导器</span><span>评分 9.2</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-dasai05/400/300" alt="魂师大赛对战战神殿赛程" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>魂师大赛对战战神殿</h3>
+              <div class="desc">学院赛之后的高阶赛事，史莱克七怪面对战神殿预备队，战术从单点突破转为消耗与反打，是本作竞技线的强度分水岭。</div>
+              <div class="card-meta"><span class="tag tag-accent">赛事</span><span class="tag">竞技</span><span class="tag">战术</span><span class="hot">热度 90</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/douluo4-lanxuan06/400/300" alt="蓝轩宇父辈线索埋设" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3>蓝轩宇父辈线索埋设</h3>
+              <div class="desc">第四部后期为后续作品留出的伏笔，涉及唐舞麟与古月娜的血脉传承。读者常在此处回看前期细节，确认埋线时间点。</div>
+              <div class="card-meta"><span class="tag tag-teal">伏笔</span><span class="tag">血脉</span><span class="tag">续作关联</span><span>评分 8.9</span></div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 / 动态 -->
+      <section class="section" id="gengxin" aria-labelledby="gengxinTitle">
+        <div class="section-head">
+          <h2 id="gengxinTitle">龙王传说漫画更新与动态</h2>
+          <span class="more">截至 2026-11-08</span>
+        </div>
+        <div id="searchFeedback" role="status" aria-live="polite"></div>
+        <ul class="tight-list">
+          <li><span class="idx">01</span><span class="name">第 412 话「金龙九转」</span><span class="brief">唐舞麟金龙王第七层封印松动，蓝银皇缠绕化解反噬</span><span class="time">今天 09:30</span></li>
+          <li><span class="idx">02</span><span class="name">第 411 话「冰火淬体」</span><span class="brief">冰火两仪眼淬炼段落收尾，古月娜留下关键对白</span><span class="time">昨天 21:10</span></li>
+          <li><span class="idx">03</span><span class="name">第 410 话「战神殿预备队」</span><span class="brief">赛事抽签结果公布，史莱克七怪首轮遭遇强敌</span><span class="time">11 月 6 日</span></li>
+          <li><span class="idx">04</span><span class="name">角色档案·原恩夜辉</span><span class="brief">新增泰坦巨猿血脉与防御定位说明</span><span class="time">11 月 5 日</span></li>
+          <li><span class="idx">05</span><span class="name">第 409 话「一字斗铠成型」</span><span class="brief">唐舞麟首套一字斗铠锻造完成，属性面板公开</span><span class="time">11 月 3 日</span></li>
+          <li><span class="idx">06</span><span class="name">剧情梳理·圣灵教线</span><span class="brief">整理圣灵教从渗透到正面冲突的五个节点</span><span class="time">11 月 2 日</span></li>
+          <li><span class="idx">07</span><span class="name">第 408 话「谢邂的速度」</span><span class="brief">谢邂敏攻系魂技升级，配合叶星澜完成双人连击</span><span class="time">10 月 31 日</span></li>
+          <li><span class="idx">08</span><span class="name">设定页·魂灵体系</span><span class="brief">补充魂灵与魂环的对应关系及获取难度</span><span class="time">10 月 29 日</span></li>
+        </ul>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="fenlei" aria-labelledby="fenleiTitle">
+        <div class="section-head">
+          <h2 id="fenleiTitle">按类别浏览斗罗大陆第四部内容</h2>
+          <span class="more">8 个入口</span>
+        </div>
+        <div class="cat-grid">
+          <a class="cat-item" href="/#gengxin"><strong>主线更新</strong><span>龙王传说逐话推进</span></a>
+          <a class="cat-item" href="/#jingxuan"><strong>角色档案</strong><span>唐舞麟与七怪成员</span></a>
+          <a class="cat-item" href="/#shenfen"><strong>战斗解析</strong><span>魂技与战术拆解</span></a>
+          <a class="cat-item" href="/#zhinan"><strong>设定资料</strong><span>斗铠与魂灵体系</span></a>
+          <a class="cat-item" href="/#pinglun"><strong>读者讨论</strong><span>条目评价与对比</span></a>
+          <a class="cat-item" href="/#zixun"><strong>赛事赛程</strong><span>魂师大赛与战神殿</span></a>
+          <a class="cat-item" href="/#tuijian"><strong>剧情梳理</strong><span>长线伏笔与线索</span></a>
+          <a class="cat-item" href="/#bangdan"><strong>热度榜单</strong><span>近期讨论集中条目</span></a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析正文 -->
+      <section class="section prose" id="shenfen" aria-labelledby="shenfenTitle">
+        <div class="section-head">
+          <h2 id="shenfenTitle">斗罗大陆第四部漫画的叙事结构与看点拆解</h2>
+          <span class="more">约 760 字</span>
+        </div>
+
+        <h3>魂导科技体系如何改变战斗逻辑</h3>
+        <p>前三部的战斗核心是魂环年限与魂技搭配，第四部把魂导科技推到台前。魂导师可以制造远程魂导炮、近战魂导刀、防御护罩和辅助推进器，普通魂师若只依赖自身魂技，在正面遭遇战中容易被装备压制。这一变化让唐舞麟的成长路径更复杂：他既要提升魂力等级，又要学习锻造与斗铠装配，才能在战斗中不被拉开差距。</p>
+        <p>实际阅读时，可以留意战斗中双方装备的出场顺序。作者往往先用魂导器试探，再用魂技决胜负。斗铠尤其关键，一字斗铠提供基础增幅，二字以上斗铠则涉及属性联动，唐舞麟的锻造天赋正是为此服务的。</p>
+
+        <h3>史莱克七怪的群像分工</h3>
+        <p>七怪重组之后，位置分工比前几部更明确：</p>
+        <ul>
+          <li><strong>唐舞麟</strong>：强攻兼控制，蓝银皇缠绕与金龙王力量的双线输出。</li>
+          <li><strong>原恩夜辉</strong>：防御核心，泰坦巨猿血脉承担正面承伤。</li>
+          <li><strong>叶星澜</strong>：剑系强攻，爆发窗口集中。</li>
+          <li><strong>谢邂</strong>：敏攻系，负责切入与牵制。</li>
+          <li><strong>徐笠智</strong>：食物系辅助，恢复与状态增幅。</li>
+          <li><strong>许小言</strong>：控制系，星轮冰杖限制对手行动。</li>
+          <li><strong>乐正宇</strong>：神圣天使，兼具净化与远程压制。</li>
+        </ul>
+        <p>这种分工让团队战有明确的阅读节奏：先由原恩夜辉顶住第一波，许小言控制，谢邂切入，唐舞麟与叶星澜收尾。读者如果关注战术，可以按这个顺序对照每场团队战。</p>
+
+        <h3>情感线与立场冲突的推进方式</h3>
+        <p>唐舞麟与古月娜的关系不是单纯的恋爱线，它绑定了魂兽与人类的资源分配问题。古月娜作为魂兽一方的代表，她的选择会影响唐舞麟在人类阵营中的位置。第四部把这条线放在冰火两仪眼、史莱克学院与战神殿几个场景中交替推进，读者容易在战斗段落中忽略对白里的立场信息。</p>
+        <div class="callout">建议在阅读冰火两仪眼相关章节时，放慢对白节奏。古月娜的措辞往往同时包含情感表达与立场声明，很多后续冲突的伏笔就藏在这些句子里。</div>
+
+        <h3>赛事段落与战争段落的节奏差异</h3>
+        <p>魂师大赛属于短周期、高密度的竞技叙事，每一场都有明确的胜负条件；深渊位面与圣灵教相关段落则拉长战线，强调资源消耗与阵营协作。两种节奏交替出现，读者如果感到某一段推进偏慢，可以先看赛事段落，再回头补战争线的前置设定。</p>
+        <p>从条目选择上说，想快速判断是否喜欢第四部，优先看三话：第 412 话「金龙九转」看战斗与血脉设定，冰火两仪眼对峙段看情感与立场，史莱克七怪完整阵容首战看群像配合。这三类内容能覆盖第四部的主要叙事特征。</p>
+      </section>
+
+      <!-- 6. 体验指南 / 消费路径 -->
+      <section class="section" id="zhinan" aria-labelledby="zhinanTitle">
+        <div class="section-head">
+          <h2 id="zhinanTitle">斗罗大陆第四部漫画的阅读顺序与判断依据</h2>
+          <span class="more">按目的选择入口</span>
+        </div>
+        <p class="lead">不同读者进入第四部的目的不同，阅读顺序也可以调整。下面按常见目的给出具体路径。</p>
+        <ol>
+          <li><strong>第一次接触，想判断是否入坑</strong>：先看第 412 话「金龙九转」，感受战斗节奏与画风；再看冰火两仪眼对峙段，判断情感线是否合口味；最后看史莱克七怪完整阵容首战，确认群像是否对味。三话读完基本能决定是否继续。</li>
+          <li><strong>追更读者，想补齐设定</strong>：优先看斗铠锻造与魂导科技设定页，再回看第 409 话「一字斗铠成型」，两处对照能理清装备等级与战斗表现的关系。</li>
+          <li><strong>喜欢竞技与战术</strong>：从第 410 话「战神殿预备队」进入，按赛程顺序追到魂师大赛对战战神殿，中间跳过日常段落不影响理解。</li>
+          <li><strong>关注角色关系</strong>：以古月娜与唐舞麟的对手戏为主线，配合角色档案中的原恩夜辉、叶星澜条目，理解七怪内部的关系网。</li>
+        </ol>
+        <p>判断一个条目值不值得投入时间，可以看三个信号：是否推进主线设定、是否出现新的斗铠或魂灵、是否改变角色立场。满足其中两项的章节，通常信息量更集中。</p>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq" aria-labelledby="faqTitle">
+        <div class="section-head">
+          <h2 id="faqTitle">斗罗大陆四瓜子漫画常见问答</h2>
+          <span class="more">6 个问题</span>
+        </div>
+
+        <details>
+          <summary>龙王传说漫画一般多久更新一话？</summary>
+          <div class="ans">按当前页面记录的节奏，龙王传说漫画通常每周更新一话，遇节日或合刊会调整到两周。第 412 话在 2026 年 11 月 8 日更新，第 411 话在前一天上线，说明近期有加密更新安排，追更时以页面更新动态为准。</div>
+        </details>
+
+        <details>
+          <summary>斗罗大陆第四部和第三部的主要区别是什么？</summary>
+          <div class="ans">第三部《龙神传说》侧重魂兽与人类的宏观冲突，第四部《龙王传说》把重心放在魂导科技与斗铠体系上，主角唐舞麟同时走魂师与锻造两条线。战斗从魂技对轰转向装备与战术配合，学院日常与战争叙事的比例也更均衡。</div>
+        </details>
+
+        <details>
+          <summary>第一次看斗罗大陆四瓜子漫画，从哪一话开始比较好？</summary>
+          <div class="ans">如果不想从第一话慢慢补，可以从第 412 话「金龙九转」入手，这一话战斗完整、设定信息集中。看完再补冰火两仪眼对峙段，能较快建立对角色关系和立场冲突的了解。之后再决定是否按顺序回补。</div>
+        </details>
+
+        <details>
+          <summary>唐舞麟的金龙王血脉和蓝银皇是什么关系？</summary>
+          <div class="ans">金龙王血脉提供刚猛的力量与体魄，蓝银皇提供控制与柔韧。两者在唐舞麟身上形成互补：金龙王负责正面压制，蓝银皇负责缠绕与化解反噬。第 412 话正是用蓝银皇的柔韧处理金龙王封印松动带来的冲击。</div>
+        </details>
+
+        <details>
+          <summary>史莱克七怪在第四部里是哪七个人？</summary>
+          <div class="ans">第四部重组的七怪为唐舞麟、原恩夜辉、叶星澜、谢邂、徐笠智、许小言、乐正宇。分工覆盖强攻、防御、敏攻、控制、辅助与远程，团队战按防御承伤、控制限制、敏攻切入、强攻收尾的顺序展开。</div>
+        </details>
+
+        <details>
+          <summary>斗铠的一字到四字等级怎么判断强弱？</summary>
+          <div class="ans">斗铠等级主要看属性联动数量与锻造精度。一字斗铠提供基础增幅，二字斗铠开始出现属性联动，三字以上涉及领域能力。唐舞麟首套一字斗铠在第 409 话成型，与后续高阶斗铠的差距主要体现在联动属性和持续作战能力上。</div>
+        </details>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="pinglun" aria-labelledby="pinglunTitle">
+        <div class="section-head">
+          <h2 id="pinglunTitle">读者对具体条目的讨论</h2>
+          <span class="more">16 条</span>
+        </div>
+        <div class="comment-grid">
+          <div class="comment"><div class="who"><b>蓝银草观察员</b><time>今天 10:12</time></div><p>第 412 话金龙王那段处理得比预期稳，没有直接爆种，而是先写反噬再写化解，节奏舒服。</p></div>
+          <div class="comment"><div class="who"><b>冰火两仪眼常客</b><time>今天 09:48</time></div><p>古月娜在冰火两仪眼的对白值得回看，很多话表面是情感，实际在说魂兽立场。</p></div>
+          <div class="comment"><div class="who"><b>谢邂速度粉</b><time>昨天 22:05</time></div><p>谢邂和叶星澜的双人连击是第 408 话最好看的部分，敏攻加剑系爆发配合很顺。</p></div>
+          <div class="comment"><div class="who"><b>一字斗铠收藏者</b><time>昨天 20:31</time></div><p>斗铠设定页比正文更直观，第 409 话的属性面板终于把一字斗铠讲清楚了。</p></div>
+          <div class="comment"><div class="who"><b>战神殿预备役</b><time>11 月 6 日</time></div><p>第 410 话抽签那段有点短，但把战神殿的压迫感立住了，期待后面的正式赛。</p></div>
+          <div class="comment"><div class="who"><b>原恩夜辉守备队</b><time>11 月 5 日</time></div><p>角色档案里原恩夜辉的防御定位写得很准，她确实是七怪里承伤最稳的一个。</p></div>
+          <div class="comment"><div class="who"><b>许小言控制流</b><time>11 月 4 日</time></div><p>许小言的星轮冰杖在团队战里存在感很高，控制时机比输出更重要。</p></div>
+          <div class="comment"><div class="who"><b>圣灵教线梳理者</b><time>11 月 3 日</time></div><p>剧情梳理把圣灵教五个节点列清楚后，再看中后期战争段落就不容易断线了。</p></div>
+          <div class="comment"><div class="who"><b>乐正宇净化位</b><time>11 月 2 日</time></div><p>神圣天使在群战里的净化效果容易被低估，实际对抗负面状态时很关键。</p></div>
+          <div class="comment"><div class="who"><b>徐笠智食物系</b><time>11 月 1 日</time></div><p>食物系辅助看起来不起眼，但恢复量决定团队战能拖多久，徐笠智的定位很实用。</p></div>
+          <div class="comment"><div class="who"><b>龙王传说追更人</b><time>10 月 31 日</time></div><p>近期更新节奏比上个月快，一周两话的时候读起来更连贯，希望保持。</p></div>
+          <div class="comment"><div class="who"><b>蓝轩宇伏笔组</b><time>10 月 30 日</time></div><p>父辈线索埋得比较早，回看前期细节能发现不少呼应，适合二刷。</p></div>
+          <div class="comment"><div class="who"><b>魂灵体系研究者</b><time>10 月 29 日</time></div><p>魂灵和魂环的对应关系这次补得比较完整，对理解后续战斗有帮助。</p></div>
+          <div class="comment"><div class="who"><b>竞技线读者</b><time>10 月 28 日</time></div><p>魂师大赛的赛程安排紧凑，但部分战斗省略了过程，看起来有点跳。</p></div>
+          <div class="comment"><div class="who"><b>叶星澜剑术迷</b><time>10 月 27 日</time></div><p>叶星澜的爆发窗口很明确，配合谢邂切入时画面张力足，建议多给双人分镜。</p></div>
+          <div class="comment"><div class="who"><b>深渊位面观察</b><time>10 月 26 日</time></div><p>战争线资源消耗的描写比想象中细，适合喜欢慢节奏设定的读者。</p></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="zixun" aria-labelledby="zixunTitle">
+        <div class="section-head">
+          <h2 id="zixunTitle">斗罗大陆第四部相关资讯</h2>
+          <span class="more">6 条</span>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news01/600/400" alt="龙王传说漫画第412话更新公告配图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-11-08</span>
+              <h3>龙王传说漫画第 412 话上线，金龙王封印线推进</h3>
+              <p>「金龙九转」正式更新，唐舞麟在极限训练中触发第七层封印，本话篇幅集中在血脉反噬与蓝银皇化解的交替过程。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news02/600/400" alt="冰火两仪眼剧情讨论热度图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-11-06</span>
+              <h3>冰火两仪眼对峙段成为本周讨论集中条目</h3>
+              <p>古月娜与唐舞麟的立场对话被读者反复拆解，相关讨论集中在魂兽与人类的资源分配问题上。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news03/600/400" alt="战神殿预备队赛程发布图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-11-04</span>
+              <h3>魂师大赛对战战神殿赛程公布，首轮对阵确定</h3>
+              <p>第 410 话披露抽签结果，史莱克七怪首轮遭遇战神殿预备队，赛程节点与出场顺序同步公开。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news04/600/400" alt="斗铠等级设定补充说明图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-11-02</span>
+              <h3>斗铠等级设定补充：一字至四字属性联动说明</h3>
+              <p>设定页更新了斗铠等级的属性联动规则，明确一字斗铠与二字斗铠在持续作战中的差距来源。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news05/600/400" alt="圣灵教线剧情节点梳理图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-10-30</span>
+              <h3>圣灵教线五个节点梳理发布，覆盖渗透到正面冲突</h3>
+              <p>剧情梳理按时间顺序整理圣灵教在第四部中的行动节点，方便读者对照中后期战争段落。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/douluo4-news06/600/400" alt="史莱克七怪群像分工图" width="600" height="400" loading="lazy">
+            <div>
+              <span class="date">2026-10-28</span>
+              <h3>史莱克七怪群像分工讨论升温，防御与辅助位受关注</h3>
+              <p>读者讨论集中在原恩夜辉的承伤定位与徐笠智的恢复效率，认为团队战节奏更依赖这两个位置。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="tuijian" aria-labelledby="tuijianTitle">
+        <div class="section-head">
+          <h2 id="tuijianTitle">延伸内容方向</h2>
+          <span class="more">紧凑索引</span>
+        </div>
+        <div class="tag-index">
+          <a href="/#shenfen">金龙王血脉与蓝银皇双线解析</a>
+          <a href="/#shenfen">史莱克七怪团队战配合顺序</a>
+          <a href="/#zhinan">斗铠锻造材料与等级对照</a>
+          <a href="/#gengxin">魂师大赛对战战神殿赛程</a>
+          <a href="/#pinglun">古月娜立场对白拆解</a>
+          <a href="/#zixun">圣灵教线时间节点梳理</a>
+          <a href="/#jingxuan">原恩夜辉防御定位档案</a>
+          <a href="/#faq">龙王传说更新频率说明</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 -->
+      <section class="section" id="bangdan" aria-labelledby="bangdanTitle">
+        <div class="section-head">
+          <h2 id="bangdanTitle">近期条目热度榜</h2>
+          <span class="more">2026-11-08 更新</span>
+        </div>
+        <ol class="rank-list">
+          <li><span class="n">1</span><span class="t">第 412 话「金龙九转」</span><span class="s">热度 98</span></li>
+          <li><span class="n">2</span><span class="t">古月娜·冰火两仪眼对峙段</span><span class="s">热度 95</span></li>
+          <li><span class="n">3</span><span class="t">史莱克七怪重组完整阵容</span><span class="s">热度 92</span></li>
+          <li><span class="n">4</span><span class="t">魂师大赛对战战神殿</span><span class="s">热度 90</span></li>
+          <li><span class="n">5</span><span class="t">一字斗铠成型与属性面板</span><span class="s">热度 88</span></li>
+          <li><span class="n">6</span><span class="t">圣灵教线五节点梳理</span><span class="s">热度 84</span></li>
+          <li><span class="n">7</span><span class="t">谢邂与叶星澜双人连击</span><span class="s">热度 81</span></li>
+          <li><span class="n">8</span><span class="t">蓝轩宇父辈线索埋设</span><span class="s">热度 78</span></li>
+        </ol>
+      </section>
+
+    </main>
+
+    <aside>
+      <div class="side-card">
+        <h2>今日更新速览</h2>
+        <ul class="side-list">
+          <li><span class="name">第 412 话「金龙九转」</span><span class="meta">今天 09:30 · 主线</span></li>
+          <li><span class="name">角色档案·许小言</span><span class="meta">今天 08:10 · 角色</span></li>
+          <li><span class="name">魂灵体系补充说明</span><span class="meta">昨天 21:40 · 设定</span></li>
+          <li><span class="name">第 411 话「冰火淬体」</span><span class="meta">昨天 21:10 · 主线</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h2>读者常搜条目</h2>
+        <ul class="side-list">
+          <li><span class="name">龙王传说第 412 话</span><span class="meta">金龙九转</span></li>
+          <li><span class="name">唐舞麟金龙王血脉</span><span class="meta">战斗设定</span></li>
+          <li><span class="name">史莱克七怪分工</span><span class="meta">群像</span></li>
+          <li><span class="name">一字斗铠属性</span><span class="meta">斗铠等级</span></li>
+          <li><span class="name">古月娜立场对白</span><span class="meta">角色线</span></li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h2>赛程提醒</h2>
+        <ul class="side-list">
+          <li><span class="name">魂师大赛首轮</span><span class="meta">史莱克七怪 vs 战神殿预备队</span></li>
+          <li><span class="name">第二轮抽签</span><span class="meta">11 月 12 日公布</span></li>
+          <li><span class="name">斗铠锻造展示</span><span class="meta">11 月 10 日条目更新</span></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#ffb347"/>
+            <path d="M18 44c6-20 12-20 14 0 2-20 8-20 14 0" fill="none" stroke="#1a1f3d" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="32" cy="22" r="6" fill="#ff6b6b"/>
+          </svg>
+          斗罗大陆四瓜子漫画
+        </div>
+        <p style="margin:0;line-height:1.7">围绕《斗罗大陆第四部：龙王传说》漫画的条目索引，整理章节更新、角色线、斗铠设定与赛事节点，按阅读目的组织内容。</p>
+      </div>
+      <div>
+        <h3>主线内容</h3>
+        <ul>
+          <li><a href="/#gengxin">更新动态</a></li>
+          <li><a href="/#jingxuan">精选条目</a></li>
+          <li><a href="/#shenfen">深度解析</a></li>
+          <li><a href="/#zixun">相关资讯</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>阅读辅助</h3>
+        <ul>
+          <li><a href="/#zhinan">阅读路径</a></li>
+          <li><a href="/#fenlei">分类索引</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#bangdan">热度榜单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>读者互动</h3>
+        <ul>
+          <li><a href="/#pinglun">读者评论</a></li>
+          <li><a href="/#tuijian">延伸方向</a></li>
+          <li><a href="/#gaishu">领域概览</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+      <span>内容整理截至 2026-11-08</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('searchInput');
+  var btn = document.getElementById('searchBtn');
+  var feedback = document.getElementById('searchFeedback');
+  var searchable = Array.prototype.slice.call(
+    document.querySelectorAll('main .card, main .tight-list li, main details, main .comment, main .news-item, main .rank-list li, main .cat-item, main .tag-index a')
+  );
+
+  function clearHighlight(){
+    searchable.forEach(function(el){ el.classList.remove('search-hit','is-hidden'); });
+  }
+
+  function runSearch(){
+    var q = (input.value || '').trim().toLowerCase();
+    clearHighlight();
+    if(!q){
+      feedback.classList.remove('show');
+      feedback.textContent = '';
+      return;
+    }
+    var hits = 0;
+    searchable.forEach(function(el){
+      var text = (el.textContent || '').toLowerCase();
+      if(text.indexOf(q) !== -1){
+        el.classList.add('search-hit');
+        hits++;
+      } else {
+        el.classList.add('is-hidden');
+      }
+    });
+    feedback.classList.add('show');
+    if(hits > 0){
+      feedback.textContent = '找到 ' + hits + ' 条与「' + q + '」相关的内容，已高亮显示，其余条目暂时收起。';
+    } else {
+      feedback.textContent = '没有找到与「' + q + '」匹配的条目，可以尝试“斗铠”“古月娜”“第 412 话”或“史莱克七怪”。';
+    }
+  }
+
+  btn.addEventListener('click', runSearch);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+  });
+  input.addEventListener('input', function(){
+    if(input.value === ''){ clearHighlight(); feedback.classList.remove('show'); feedback.textContent=''; }
+  });
+})();
+</script>
+
+</body>
+            </html>
