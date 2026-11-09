@@ -1,0 +1,1721 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海角大陆今日直接访问 - 社区精选与深度解析</title>
+  <meta name="description" content="海角大陆今日直接访问，汇聚社区精选创作、最新动态与深度解析。提供热门作品榜、类型分类、体验指南与用户评论，适合常驻居民及新访客快速融入。">
+  <meta name="keywords" content="海角大陆社区, 今日访问指南, 精选作品, 深度解析, 热门榜单">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e293b'/%3E%3Cpath d='M20 70 L50 20 L80 70 Z' fill='%2338bdf8'/%3E%3Ccircle cx='50' cy='55' r='10' fill='%23f8fafc'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --panel: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --primary: #0b3b5c;
+      --primary-light: #e0f2fe;
+      --accent: #f97316;
+      --accent-light: #fff7ed;
+      --success: #10b981;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --max-width: 1320px;
+      --header-height: 120px;
+      --announce-height: 40px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .announcement-bar {
+      background: var(--primary);
+      color: white;
+      padding: 8px 0;
+      font-size: 0.875rem;
+      height: var(--announce-height);
+      display: flex;
+      align-items: center;
+    }
+
+    .announcement-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .announcement-content a {
+      color: #bae6fd;
+      font-weight: 500;
+      border-bottom: 1px dashed #bae6fd;
+    }
+
+    .announcement-content a:hover {
+      color: white;
+      border-bottom-color: white;
+    }
+
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .main-nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 0.9rem;
+      width: 180px;
+      color: var(--text);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    /* 主内容区 - 三栏门户 */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: 24px;
+      padding: 24px 0;
+    }
+
+    /* 左侧频道索引 */
+    .channel-sidebar {
+      position: sticky;
+      top: calc(var(--announce-height) + 72px + 16px);
+      align-self: start;
+    }
+
+    .channel-index {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .channel-index h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      padding: 0 20px 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .channel-index ul {
+      list-style: none;
+    }
+
+    .channel-index li a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .channel-index li a:hover,
+    .channel-index li a.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-left-color: var(--primary);
+    }
+
+    /* 中间主内容 */
+    .main-content {
+      min-width: 0;
+    }
+
+    /* 主题首屏 */
+    .hero-section {
+      background: linear-gradient(135deg, #0b3b5c 0%, #1e4b6e 100%);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      color: white;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      bottom: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-section h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section p {
+      font-size: 1.05rem;
+      color: #bae6fd;
+      max-width: 640px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #ea580c;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* 板块通用 */
+    .section {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .section-header .more-link {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .section-header .more-link:hover {
+      color: var(--primary);
+    }
+
+    /* 精选内容推荐 - 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--panel);
+    }
+
+    .card-body {
+      padding: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--text-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .tag-accent {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* 最新更新/热播动态 - 紧凑列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .update-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+
+    .update-item:hover {
+      background: var(--panel);
+    }
+
+    .update-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 60px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .update-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .update-summary {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-left: auto;
+      text-align: right;
+    }
+
+    /* 分类入口 - 标签索引 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+      background: var(--panel);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .category-item:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* 深度解析正文 */
+    .deep-dive {
+      line-height: 1.8;
+    }
+
+    .deep-dive h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 20px 0 10px;
+    }
+
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .deep-dive p {
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .deep-dive ul, .deep-dive ol {
+      margin: 12px 0 16px 20px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: var(--surface);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    details[open] summary::after {
+      content: '−';
+    }
+
+    summary:hover {
+      background: var(--panel);
+    }
+
+    details[open] summary {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-answer {
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      background: var(--surface);
+    }
+
+    /* 用户评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .comment-card {
+      background: var(--panel);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .comment-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comment-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+
+    .comment-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .comment-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .comment-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    /* 相关资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .news-img {
+      width: 100px;
+      height: 70px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--panel);
+    }
+
+    .news-body {
+      flex: 1;
+    }
+
+    .news-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .news-title:hover {
+      color: var(--primary);
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .news-summary {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 相关推荐 - 标签索引 */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag-large {
+      padding: 8px 18px;
+      background: var(--panel);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .tag-large:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* 热门榜单 */
+    .rank-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    .rank-item:hover {
+      background: var(--panel);
+    }
+
+    .rank-number {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      min-width: 28px;
+      text-align: center;
+    }
+
+    .rank-number.top {
+      color: var(--accent);
+    }
+
+    .rank-info {
+      flex: 1;
+    }
+
+    .rank-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .rank-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .rank-score {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* 右侧辅助栏 */
+    .aux-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: calc(var(--announce-height) + 72px + 16px);
+      align-self: start;
+    }
+
+    .sidebar-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--primary);
+    }
+
+    .sidebar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .sidebar-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--primary);
+      color: #cbd5e1;
+      margin-top: 48px;
+      padding: 48px 0 24px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+
+    .footer-brand h4 {
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.9rem;
+      color: white;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #334155;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #64748b;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1200px) {
+      .portal-grid {
+        grid-template-columns: 160px 1fr 220px;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .portal-grid {
+        grid-template-columns: 1fr 260px;
+      }
+
+      .channel-sidebar {
+        display: none;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .header-inner {
+        height: 64px;
+      }
+
+      .search-box input {
+        width: 120px;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .aux-sidebar {
+        position: static;
+      }
+
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-section {
+        padding: 28px 20px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .header-actions {
+        gap: 8px;
+      }
+
+      .search-box {
+        display: none;
+      }
+
+      .update-summary {
+        display: none;
+      }
+
+      .main-nav {
+        display: none;
+      }
+    }
+
+    /* 锚点滚动偏移 */
+    :target {
+      scroll-margin-top: calc(var(--announce-height) + 72px + 16px);
+    }
+
+    /* 滚动条美化 */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrapper">
+  <div class="announcement-bar">
+    <div class="announcement-content">
+      <span>📢 本周新增 12 条“海角大陆”探索档案，今日直接访问已同步更新</span>
+      <a href="#latest-updates">查看更新 →</a>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <svg viewBox="0 0 100 100" width="40" height="40">
+          <rect width="100" height="100" rx="20" fill="#0b3b5c"/>
+          <path d="M20 70 L50 20 L80 70 Z" fill="#38bdf8"/>
+          <circle cx="50" cy="55" r="10" fill="#f8fafc"/>
+        </svg>
+        <span class="brand-name">海角大陆今日直接访问</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#featured">精选作品</a>
+        <a href="#latest-updates">最新动态</a>
+        <a href="#categories">类型分类</a>
+        <a href="#deep-dive">深度解析</a>
+        <a href="#faq">常见问题</a>
+        <a href="#rankings">热门榜单</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="search" id="searchInput" placeholder="搜索条目或类型..." aria-label="搜索内容">
+          <button type="button" aria-label="搜索">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+        <button class="mobile-menu-btn" aria-label="菜单">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main class="container">
+  <div class="portal-grid">
+    <!-- 左侧频道索引 -->
+    <aside class="channel-sidebar">
+      <div class="channel-index">
+        <h2>频道索引</h2>
+        <ul>
+          <li><a href="#featured" class="active">精选作品</a></li>
+          <li><a href="#latest-updates">最新动态</a></li>
+          <li><a href="#categories">类型分类</a></li>
+          <li><a href="#deep-dive">深度解析</a></li>
+          <li><a href="#guide">体验指南</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#comments">用户评论</a></li>
+          <li><a href="#news">相关资讯</a></li>
+          <li><a href="#recommendations">相关推荐</a></li>
+          <li><a href="#rankings">热门榜单</a></li>
+          <li><a href="#overview">领域概览</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <div class="main-content">
+      <!-- 主题首屏 -->
+      <section class="hero-section">
+        <h1>海角大陆今日直接访问</h1>
+        <p>汇聚海角大陆社区每日精选创作、热门讨论与深度解读。从探索档案到居民日常，从类型分类到热门榜单，为常驻居民与新访客提供一站式的今日访问指南。</p>
+        <div class="hero-actions">
+          <a href="#featured" class="btn btn-primary">今日精选 →</a>
+          <a href="#latest-updates" class="btn btn-secondary">查看最新动态</a>
+        </div>
+      </section>
+
+      <!-- 1. 主题领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <h2>海角大陆领域概览</h2>
+        </div>
+        <div class="deep-dive">
+          <p>海角大陆是一个以探索档案、居民日常与创作分享为核心的内容社区。这里的“今日直接访问”指向的是每日更新的内容聚合入口，涵盖探索记录、短篇故事、视觉创作、规则讨论与社区活动等方向。访问者通常带着明确目的而来：有人追踪特定的探索档案更新，有人寻找某一类型的短篇创作，也有人希望快速了解当日社区的热门话题与规则变动。</p>
+          <p>当前值得关注的内容方向包括：长期连载的“深海异常信号档案”系列、以“雾港谜案”为代表的悬疑短篇、记录居民日常的“海角食堂”图文日志，以及每周更新的“大陆规则速报”。这些内容分别对应不同的搜索意图——找具体条目、找类型方向、找对比依据。对于初次访问的居民，建议从“精选作品”中的高评分条目入手，再结合“类型分类”与“热门榜单”逐步建立自己的内容消费路径。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2>今日精选作品</h2>
+          <a href="#categories" class="more-link">按类型筛选 →</a>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <img src="https://picsum.photos/seed/haijiao-dangan47/400/300" alt="深海异常信号档案封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">深海异常信号档案</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">探索档案</span>
+                <span class="tag">悬疑</span>
+                <span class="tag">连载</span>
+              </div>
+              <p class="card-desc">记录海角大陆周边海域的异常信号源，第 12 期更新了“回声岛”坐标解析与三次水下录音采样。</p>
+              <div class="card-meta">
+                <span>⭐ 9.2</span>
+                <span>🔥 1.2k 浏览</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/wugang-mian08/400/300" alt="雾港谜案系列封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">雾港谜案</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">悬疑短篇</span>
+                <span class="tag">推理</span>
+                <span class="tag">完结</span>
+              </div>
+              <p class="card-desc">发生在雾港的连环失踪案，主角通过潮汐表与旧灯塔日志还原真相，全 8 章已完结。</p>
+              <div class="card-meta">
+                <span>⭐ 8.9</span>
+                <span>🔥 980 浏览</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/haijiao-shitang12/400/300" alt="海角食堂图文日志封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">海角食堂</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">居民日常</span>
+                <span class="tag">美食</span>
+                <span class="tag">图文</span>
+              </div>
+              <p class="card-desc">记录海角大陆居民的一日三餐与食材来源，本期探访了南岸渔市的早市与熏鱼工坊。</p>
+              <div class="card-meta">
+                <span>⭐ 8.7</span>
+                <span>🔥 1.5k 浏览</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/dalu-guize03/400/300" alt="大陆规则速报封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">大陆规则速报</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">规则讨论</span>
+                <span class="tag">社区</span>
+                <span class="tag">周更</span>
+              </div>
+              <p class="card-desc">每周汇总海角大陆社区规则调整与投票结果，本期涉及“探索档案发布规范”的修订。</p>
+              <div class="card-meta">
+                <span>⭐ 8.5</span>
+                <span>🔥 760 浏览</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/xinghai-riji22/400/300" alt="星海漂流日记封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">星海漂流日记</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">视觉创作</span>
+                <span class="tag">摄影</span>
+                <span class="tag">连载</span>
+              </div>
+              <p class="card-desc">以海角大陆夜空为背景的系列摄影作品，第 7 期记录了“双月同现”的罕见天象。</p>
+              <div class="card-meta">
+                <span>⭐ 9.0</span>
+                <span>🔥 2.1k 浏览</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/beian-jilu15/400/300" alt="北岸迁徙记录封面" class="card-img" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">北岸迁徙记录</h3>
+              <div class="card-tags">
+                <span class="tag tag-accent">探索档案</span>
+                <span class="tag">生态</span>
+                <span class="tag">连载</span>
+              </div>
+              <p class="card-desc">跟踪北岸候鸟与洄游鱼群的季节变化，第 3 期附带了潮间带生物分布图。</p>
+              <div class="card-meta">
+                <span>⭐ 8.8</span>
+                <span>🔥 890 浏览</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 / 热播 / 动态 -->
+      <section class="section" id="latest-updates">
+        <div class="section-header">
+          <h2>最新更新与社区动态</h2>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="update-time">今天 09:30</span>
+            <span class="update-title">深海异常信号档案</span>
+            <span class="update-summary">第 12 期已上线，新增“回声岛”水下录音</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">今天 08:15</span>
+            <span class="update-title">海角食堂</span>
+            <span class="update-summary">更新南岸渔市早市图集，共 18 张</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">昨天 21:10</span>
+            <span class="update-title">大陆规则速报</span>
+            <span class="update-summary">发布第 44 期：探索档案发布规范修订</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">昨天 18:45</span>
+            <span class="update-title">星海漂流日记</span>
+            <span class="update-summary">第 7 期“双月同现”摄影作品更新</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11 月 6 日</span>
+            <span class="update-title">雾港谜案</span>
+            <span class="update-summary">最终章“灯塔之下”已发布，全篇完结</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11 月 5 日</span>
+            <span class="update-title">北岸迁徙记录</span>
+            <span class="update-summary">第 3 期附潮间带生物分布图</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11 月 4 日</span>
+            <span class="update-title">海角图书馆</span>
+            <span class="update-summary">新增 5 本地方志扫描件，可在线翻阅</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11 月 3 日</span>
+            <span class="update-title">社区活动</span>
+            <span class="update-summary">“秋季探索笔记大赛”投稿截止倒计时 3 天</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2>按类型浏览</h2>
+        </div>
+        <div class="category-grid">
+          <a href="#featured" class="category-item">探索档案</a>
+          <a href="#featured" class="category-item">悬疑短篇</a>
+          <a href="#featured" class="category-item">居民日常</a>
+          <a href="#featured" class="category-item">视觉创作</a>
+          <a href="#featured" class="category-item">规则讨论</a>
+          <a href="#featured" class="category-item">生态观察</a>
+          <a href="#featured" class="category-item">地方志</a>
+          <a href="#featured" class="category-item">活动与竞赛</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析正文 -->
+      <section class="section" id="deep-dive">
+        <div class="section-header">
+          <h2>深度解析：海角大陆的内容类型与消费路径</h2>
+        </div>
+        <div class="deep-dive">
+          <h3>探索档案与悬疑短篇的差异</h3>
+          <p>探索档案以真实地理或虚构地点为背景，强调“记录”属性，通常包含坐标、采样数据、时间线等要素，阅读时更像跟随调查员手记。悬疑短篇则围绕单一案件或谜团展开，有明确的开头、发展与结局，章节间存在强因果关系。两者在海角大陆社区中均有大量受众，但搜索意图不同：找“深海异常信号档案”的读者往往在追踪连载更新，而找“雾港谜案”的读者更关心完结状态与推理逻辑是否自洽。</p>
+          <h3>如何判断一个条目是否值得投入时间</h3>
+          <p>可以从三个维度快速评估：一是更新状态（连载中/已完结），连载中条目适合愿意追更的读者；二是评分与评论数量，评分高于 8.5 且评论数超过 50 的条目通常经过社区较多讨论；三是标签与摘要是否匹配个人兴趣，例如“生态观察”标签下的内容更适合对自然记录感兴趣的访问者。对于初次接触海角大陆的居民，建议优先选择已完结且评分稳定的条目，如《雾港谜案》，再根据兴趣扩展至连载档案。</p>
+          <h3>类型之间的比较与选择</h3>
+          <ul>
+            <li><strong>探索档案 vs 生态观察：</strong>前者侧重地理与信号异常，后者侧重生物与季节变化，两者都包含实地记录元素，但后者图文比例更高。</li>
+            <li><strong>居民日常 vs 视觉创作：</strong>居民日常以文字与生活场景为主，视觉创作以摄影或绘画作品为核心，后者更适合快速浏览。</li>
+            <li><strong>规则讨论 vs 活动与竞赛：</strong>规则讨论关注社区治理与发布规范，活动与竞赛则是短期参与型内容，前者适合长期关注社区发展的居民。</li>
+          </ul>
+          <h3>消费节奏建议</h3>
+          <p>海角大陆的更新频率整体稳定：探索档案类通常每周更新 1—2 期，悬疑短篇多为完结后一次性放出，居民日常与视觉创作更新较为随机但频率较高。若每日直接访问，建议先浏览“最新更新与社区动态”中的时间线，锁定当日新增条目，再根据“热门榜单”验证社区关注度，最后进入“深度解析”或“体验指南”补充背景知识。对于连载中的探索档案，不必每期追更，可按周集中阅读，以减少碎片化。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 / 消费路径 -->
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2>体验指南：从哪开始看</h2>
+        </div>
+        <div class="deep-dive">
+          <p>如果你今天第一次直接访问海角大陆，面对众多条目可能会感到无从下手。一个高效的起步路径是：<strong>先看“热门榜单”前三名</strong>，了解社区当前共识度最高的内容；<strong>再进入“精选作品”</strong>，根据标签挑选一个已完结且评分高于 8.5 的条目试读；<strong>最后查看“最新动态”</strong>，确认是否有你感兴趣的连载更新。这样可以在 20 分钟内建立对海角大陆内容风格的基本印象。</p>
+          <p>对于已经熟悉社区的居民，建议根据当天的时间与精力选择消费深度：碎片时间可浏览“星海漂流日记”等视觉创作或“海角食堂”图文日志；有整块时间时再进入“深海异常信号档案”等长篇连载。判断一个条目是否值得投入更多时间，可以参考“用户评论”中其他居民对具体章节的讨论，若评论聚焦于细节推理或情感共鸣，通常意味着内容层次较丰富。类似条目之间的比较，优先看更新频率与作者互动情况，长期稳定更新的作者往往更值得追更。</p>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>海角大陆的探索档案一般多久更新一次？</summary>
+            <div class="faq-answer">多数探索档案系列保持每周 1—2 期的更新节奏，如《深海异常信号档案》通常在周四或周五发布新一期。部分长篇档案可能间隔两周，具体以作者在条目页标注的更新计划为准。</div>
+          </details>
+          <details>
+            <summary>雾港谜案和深海异常信号档案有什么区别？</summary>
+            <div class="faq-answer">《雾港谜案》是已完结的悬疑短篇，围绕单一案件展开，适合一次性读完；《深海异常信号档案》是连载中的探索记录，侧重地理信号与采样数据，适合喜欢追踪长期线索的读者。</div>
+          </details>
+          <details>
+            <summary>第一次接触海角大陆，从哪个条目开始看比较好？</summary>
+            <div class="faq-answer">建议从《雾港谜案》或《星海漂流日记》入手。前者是完结推理故事，结构完整；后者是视觉摄影作品，浏览门槛低。两者都能快速体现海角大陆的内容风格。</div>
+          </details>
+          <details>
+            <summary>探索档案类内容的评判标准通常是什么？</summary>
+            <div class="faq-answer">社区通常从记录完整性（是否包含坐标、时间、采样数据）、更新稳定性、图文匹配度以及是否提供可验证的参考来源四个维度评价。评分高于 8.5 的档案在这些方面表现较为均衡。</div>
+          </details>
+          <details>
+            <summary>海角食堂的图文日志主要记录什么？</summary>
+            <div class="faq-answer">《海角食堂》记录居民日常饮食与食材来源，包括渔市早市、家庭烹饪、地方小吃制作等。每期围绕一个具体场景展开，适合对海岛生活细节感兴趣的读者。</div>
+          </details>
+          <details>
+            <summary>大陆规则速报多久发布一次？</summary>
+            <div class="faq-answer">《大陆规则速报》每周发布一期，汇总社区规则调整、投票结果与发布规范修订。通常在周一或周二更新，可通过订阅该条目接收通知。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-header">
+          <h2>居民评论</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">海</div>
+              <span class="comment-name">海角老居民</span>
+            </div>
+            <p class="comment-text">深海档案第12期的回声岛录音质量很高，低频部分值得戴耳机细听。</p>
+            <span class="comment-date">今天 10:02</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">雾</div>
+              <span class="comment-name">雾港读者</span>
+            </div>
+            <p class="comment-text">雾港谜案完结了，灯塔之下的反转虽然能猜到但氛围描写依然出色。</p>
+            <span class="comment-date">昨天 22:15</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">星</div>
+              <span class="comment-name">星海漫游者</span>
+            </div>
+            <p class="comment-text">双月同现那组照片的色温处理很舒服，没有过度后期，喜欢。</p>
+            <span class="comment-date">昨天 19:30</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">食</div>
+              <span class="comment-name">食堂常客</span>
+            </div>
+            <p class="comment-text">南岸渔市那期拍得很有生活气，但熏鱼工坊部分如果能多写点工艺细节就更好了。</p>
+            <span class="comment-date">昨天 16:20</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">规</div>
+              <span class="comment-name">规则观察员</span>
+            </div>
+            <p class="comment-text">第44期规则速报里关于发布规范修订的说明比较清晰，投票流程也透明。</p>
+            <span class="comment-date">11 月 7 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">北</div>
+              <span class="comment-name">北岸行者</span>
+            </div>
+            <p class="comment-text">北岸迁徙记录第3期的潮间带生物分布图很实用，我对照认出了好几种蟹。</p>
+            <span class="comment-date">11 月 6 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">图</div>
+              <span class="comment-name">图书馆常驻</span>
+            </div>
+            <p class="comment-text">新上的地方志扫描件清晰度不错，但检索功能还可以再方便些。</p>
+            <span class="comment-date">11 月 5 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">新</div>
+              <span class="comment-name">新来的岛民</span>
+            </div>
+            <p class="comment-text">刚来海角大陆，按指南从雾港谜案开始看，确实容易进入状态。</p>
+            <span class="comment-date">11 月 5 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">潮</div>
+              <span class="comment-name">潮汐爱好者</span>
+            </div>
+            <p class="comment-text">回声岛坐标解析那部分和之前的旧帖有矛盾，作者在评论区回复会修正，态度不错。</p>
+            <span class="comment-date">11 月 4 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">笔</div>
+              <span class="comment-name">笔记收集者</span>
+            </div>
+            <p class="comment-text">秋季探索笔记大赛的投稿作品质量参差，但有几篇关于潮间带的记录很扎实。</p>
+            <span class="comment-date">11 月 3 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">夜</div>
+              <span class="comment-name">夜航船</span>
+            </div>
+            <p class="comment-text">星海漂流日记的更新频率不太固定，有时候要等两周，不过质量一直在线。</p>
+            <span class="comment-date">11 月 2 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">档</div>
+              <span class="comment-name">档案整理员</span>
+            </div>
+            <p class="comment-text">希望深海档案能出个合集索引，按坐标排序，现在翻旧期数有点麻烦。</p>
+            <span class="comment-date">11 月 1 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">南</div>
+              <span class="comment-name">南岸渔夫</span>
+            </div>
+            <p class="comment-text">海角食堂拍的那家熏鱼工坊我去过，老板确实每天凌晨开始备料。</p>
+            <span class="comment-date">10 月 31 日</span>
+          </div>
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-avatar">谜</div>
+              <span class="comment-name">谜题收藏家</span>
+            </div>
+            <p class="comment-text">雾港谜案的推理链完整，但感情线稍显单薄，总体还是推荐的。</p>
+            <span class="comment-date">10 月 30 日</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2>相关资讯</h2>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/dangan-xinwen06/600/400" alt="深海异常信号档案第12期发布" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#latest-updates" class="news-title">深海异常信号档案第12期发布，回声岛录音采样公开</a>
+              <div class="news-date">2026-11-08</div>
+              <p class="news-summary">本期档案包含三段水下录音与回声岛坐标解析，作者同步更新了采样设备清单。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/guize-xiuding07/600/400" alt="探索档案发布规范修订" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#latest-updates" class="news-title">大陆规则速报第44期：探索档案发布规范修订通过</a>
+              <div class="news-date">2026-11-07</div>
+              <p class="news-summary">新规范要求探索档案类内容注明采样时间与设备型号，投票参与人数超过 300。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/wugang-wanjie08/600/400" alt="雾港谜案完结" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#featured" class="news-title">雾港谜案最终章“灯塔之下”发布，全篇完结</a>
+              <div class="news-date">2026-11-06</div>
+              <p class="news-summary">作者在章末附言中感谢读者追更，并表示后续可能推出番外短篇。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/beian-shengwu09/600/400" alt="北岸迁徙记录潮间带图" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#featured" class="news-title">北岸迁徙记录第3期上线，附潮间带生物分布图</a>
+              <div class="news-date">2026-11-05</div>
+              <p class="news-summary">分布图标注了 14 种常见潮间带生物的位置，可用于实地对照观察。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/tushuguan10/600/400" alt="海角图书馆新增地方志" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#latest-updates" class="news-title">海角图书馆新增 5 本地方志扫描件，支持在线翻阅</a>
+              <div class="news-date">2026-11-04</div>
+              <p class="news-summary">新增内容涵盖南岸渔村史、北岸灯塔日志与雾港航运档案，均为高清扫描。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/biji-dasai11/600/400" alt="秋季探索笔记大赛投稿倒计时" class="news-img" width="600" height="400" loading="lazy">
+            <div class="news-body">
+              <a href="#latest-updates" class="news-title">秋季探索笔记大赛投稿截止倒计时 3 天</a>
+              <div class="news-date">2026-11-03</div>
+              <p class="news-summary">目前收到 87 份投稿，主题集中在潮间带观察与夜间天象记录两个方向。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="recommendations">
+        <div class="section-header">
+          <h2>延伸方向与相关条目</h2>
+        </div>
+        <div class="tag-cloud">
+          <a href="#featured" class="tag-large">回声岛坐标解析</a>
+          <a href="#featured" class="tag-large">雾港潮汐表</a>
+          <a href="#featured" class="tag-large">海角食堂熏鱼工坊</a>
+          <a href="#featured" class="tag-large">双月同现摄影</a>
+          <a href="#featured" class="tag-large">北岸潮间带生物</a>
+          <a href="#featured" class="tag-large">大陆规则修订对照</a>
+          <a href="#featured" class="tag-large">秋季笔记大赛作品</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 -->
+      <section class="section" id="rankings">
+        <div class="section-header">
+          <h2>本周热门榜单</h2>
+          <span style="font-size:0.8rem;color:var(--text-muted);">截至 2026-11-08</span>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item">
+            <span class="rank-number top">1</span>
+            <div class="rank-info">
+              <div class="rank-title">深海异常信号档案</div>
+              <div class="rank-meta">探索档案 · 第12期更新</div>
+            </div>
+            <span class="rank-score">9.2</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-number top">2</span>
+            <div class="rank-info">
+              <div class="rank-title">星海漂流日记</div>
+              <div class="rank-meta">视觉创作 · 双月同现</div>
+            </div>
+            <span class="rank-score">9.0</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-number top">3</span>
+            <div class="rank-info">
+              <div class="rank-title">雾港谜案</div>
+              <div class="rank-meta">悬疑短篇 · 已完结</div>
+            </div>
+            <span class="rank-score">8.9</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-number">4</span>
+            <div class="rank-info">
+              <div class="rank-title">北岸迁徙记录</div>
+              <div class="rank-meta">生态观察 · 第3期</div>
+            </div>
+            <span class="rank-score">8.8</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-number">5</span>
+            <div class="rank-info">
+              <div class="rank-title">海角食堂</div>
+              <div class="rank-meta">居民日常 · 南岸渔市</div>
+            </div>
+            <span class="rank-score">8.7</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-number">6</span>
+            <div class="rank-info">
+              <div class="rank-title">大陆规则速报</div>
+              <div class="rank-meta">规则讨论 · 第44期</div>
+            </div>
+            <span class="rank-score">8.5</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="aux-sidebar">
+      <div class="sidebar-card">
+        <h3>今日更新速览</h3>
+        <div class="sidebar-list">
+          <div class="sidebar-item">
+            <span class="dot"></span>
+            <span>深海异常信号档案 第12期</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="dot"></span>
+            <span>海角食堂 南岸渔市图集</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="dot"></span>
+            <span>大陆规则速报 第44期</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="dot"></span>
+            <span>星海漂流日记 双月同现</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="dot"></span>
+            <span>雾港谜案 最终章</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>热门标签</h3>
+        <div class="tag-cloud" style="gap:8px;">
+          <a href="#featured" class="tag" style="padding:6px 12px;">回声岛</a>
+          <a href="#featured" class="tag" style="padding:6px 12px;">潮汐表</a>
+          <a href="#featured" class="tag" style="padding:6px 12px;">熏鱼工坊</a>
+          <a href="#featured" class="tag" style="padding:6px 12px;">双月同现</a>
+          <a href="#featured" class="tag" style="padding:6px 12px;">潮间带</a>
+          <a href="#featured" class="tag" style="padding:6px 12px;">规则修订</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>活跃居民</h3>
+        <div class="sidebar-list">
+          <div class="sidebar-item"><span class="dot" style="background:var(--primary);"></span>海角老居民 · 今日 3 条评论</div>
+          <div class="sidebar-item"><span class="dot" style="background:var(--primary);"></span>雾港读者 · 今日 2 条评论</div>
+          <div class="sidebar-item"><span class="dot" style="background:var(--primary);"></span>北岸行者 · 今日 1 条评论</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>海角大陆今日直接访问</h4>
+        <p>汇聚社区每日精选创作、探索档案与居民日常，为常驻居民与新访客提供清晰的今日访问入口与深度内容指引。</p>
+      </div>
+      <div class="footer-col">
+        <h5>内容频道</h5>
+        <ul>
+          <li><a href="#featured">精选作品</a></li>
+          <li><a href="#latest-updates">最新动态</a></li>
+          <li><a href="#categories">类型分类</a></li>
+          <li><a href="#deep-dive">深度解析</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>互动与帮助</h5>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#comments">用户评论</a></li>
+          <li><a href="#guide">体验指南</a></li>
+          <li><a href="#rankings">热门榜单</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>延伸阅读</h5>
+        <ul>
+          <li><a href="#news">相关资讯</a></li>
+          <li><a href="#recommendations">相关推荐</a></li>
+          <li><a href="#overview">领域概览</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 海角大陆社区 · 内容聚合示例</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 简单的本地搜索筛选（仅演示，无结果反馈）
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.card, .update-item, .rank-item, .news-item');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (query === '' || text.includes(query)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      // 无结果反馈可通过控制台或简单提示，此处不额外插入元素以保持简洁
+    });
+  }
+
+  // 移动端菜单按钮仅作占位，不展开完整导航以保持简洁
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      alert('导航菜单：精选作品、最新动态、类型分类、深度解析、常见问题、热门榜单');
+    });
+  }
+</script>
+</body>
+              </html>
