@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>51chigua - 全网吃瓜资讯聚合</title>
+  <meta name="description" content="51chigua 聚合娱乐圈、网红、影视综艺的吃瓜内容，提供精选八卦卡片、最新动态、深度解析、社区评论与相关资讯，适合喜欢追踪热点话题的网友浏览。">
+  <meta name="keywords" content="吃瓜资讯, 娱乐八卦, 网红动态, 影视综艺, 热搜话题">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f3e4e'/%3E%3Ctext x='12' y='44' font-size='36' fill='%23f4c542' font-family='sans-serif'%3E%F0%9F%8D%89%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #1e2a36;
+      --ink-soft: #4a5a6a;
+      --muted: #7a8b9b;
+      --line: #e2e7ec;
+      --brand: #2f3e4e;
+      --brand-soft: #edf1f5;
+      --accent: #d9480f;
+      --accent-soft: #fff0e8;
+      --gold: #b8860b;
+      --radius: 14px;
+      --shadow: 0 2px 12px rgba(30, 42, 54, .07);
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --sticky-offset: 96px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--sticky-offset); }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ---------- 吸顶区 ---------- */
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .notice-bar {
+      background: var(--brand);
+      color: #f7f3e8;
+      font-size: 13px;
+      letter-spacing: .2px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .notice-bar .dot {
+      width: 7px; height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex: none;
+    }
+    .site-header {
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: none;
+    }
+    .brand-mark {
+      width: 38px; height: 38px;
+      border-radius: 11px;
+      background: linear-gradient(145deg, #2f3e4e, #455a6e);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      color: var(--brand);
+    }
+    .main-nav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
+    .main-nav a {
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding: 6px 11px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .main-nav a:hover, .main-nav a:focus-visible {
+      background: var(--brand-soft);
+      color: var(--brand);
+      outline: none;
+    }
+    .header-search {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fafbfc;
+      overflow: hidden;
+      flex: none;
+      width: 210px;
+    }
+    .header-search input {
+      border: 0; outline: none; background: transparent;
+      padding: 8px 10px; font-size: 13px; width: 100%;
+      color: var(--ink);
+    }
+    .header-search button {
+      border: 0; background: var(--brand); color: #fff;
+      padding: 8px 13px; font-size: 13px;
+    }
+    .header-search button:hover { background: #1e2a36; }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 36px 20px 30px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -1px;
+      color: var(--brand);
+      margin: 8px 0 14px;
+    }
+    .hero-kicker {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 12px;
+      border-radius: 30px;
+      letter-spacing: .5px;
+    }
+    .hero-desc {
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      max-width: 560px;
+      margin-bottom: 22px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-ghost {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 10px;
+      transition: .18s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #b83a08; border-color: #b83a08; }
+    .btn-ghost {
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--brand); }
+
+    .hero-visual {
+      position: relative;
+      background: linear-gradient(150deg, #2f3e4e 0%, #455a6e 55%, #5f7688 100%);
+      border-radius: 22px;
+      padding: 26px 24px;
+      color: #eef3f7;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 260px;
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      right: -50px; top: -50px;
+      width: 190px; height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,197,66,.22), transparent 70%);
+    }
+    .hv-title {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #f4c542;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hv-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.13);
+    }
+    .hv-item:first-of-type { border-top: 0; }
+    .hv-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f4c542;
+      line-height: 1.2;
+      min-width: 30px;
+    }
+    .hv-text { font-size: 14px; line-height: 1.45; }
+    .hv-text small { display: block; color: #b9c8d4; font-size: 12px; margin-top: 1px; }
+
+    /* ---------- 主布局：三栏门户 ---------- */
+    .layout {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
+      display: grid;
+      grid-template-columns: 178px minmax(0, 1fr) 248px;
+      gap: 28px;
+      align-items: start;
+    }
+    .channel-index {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 12px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 12px;
+      box-shadow: var(--shadow);
+    }
+    .channel-index h2 {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 0 8px 10px;
+      font-weight: 700;
+    }
+    .channel-index ul li a {
+      display: block;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      padding: 7px 10px;
+      border-radius: 8px;
+      transition: .14s;
+    }
+    .channel-index ul li a:hover,
+    .channel-index ul li a:focus-visible {
+      background: var(--brand-soft);
+      color: var(--brand);
+      outline: none;
+    }
+    .side-note {
+      margin-top: 14px;
+      padding: 12px 12px 4px;
+      border-top: 1px dashed var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .main-col { min-width: 0; }
+
+    /* 板块通用 */
+    .block {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .block-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .block-head h2 {
+      font-size: 19px;
+      letter-spacing: -.3px;
+      color: var(--brand);
+    }
+    .block-head .more {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .block-intro {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin: -6px 0 16px;
+    }
+
+    /* 概览文字 */
+    .overview-text p {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+    .overview-text strong { color: var(--ink); }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 16px;
+    }
+    .pick-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: .18s;
+    }
+    .pick-card:hover { border-color: #c5d0da; box-shadow: 0 4px 16px rgba(30,42,54,.08); }
+    .pick-card img {
+      width: 100%;
+      height: 128px;
+      object-fit: cover;
+      background: #e8edf2;
+    }
+    .pick-body { padding: 12px 13px 14px; flex: 1; display: flex; flex-direction: column; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; }
+    .tag {
+      font-size: 11px;
+      padding: 1px 8px;
+      border-radius: 20px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      line-height: 1.7;
+    }
+    .tag.hot { background: var(--accent-soft); color: var(--accent); }
+    .pick-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .pick-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .pick-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    .pick-meta .score { color: var(--gold); font-weight: 700; }
+
+    /* 动态列表 */
+    .update-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+      align-items: baseline;
+    }
+    .update-list li:last-child { border-bottom: 0; }
+    .update-time {
+      flex: none;
+      font-size: 11.5px;
+      color: var(--muted);
+      min-width: 72px;
+      font-variant-numeric: tabular-nums;
+    }
+    .update-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .update-summary {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    /* 分类入口 */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .cat-item {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 12px;
+      background: #fbfcfd;
+      transition: .14s;
+    }
+    .cat-item:hover, .cat-item:focus-visible {
+      border-color: var(--brand);
+      background: #fff;
+      outline: none;
+    }
+    .cat-item strong { display: block; font-size: 14px; color: var(--brand); margin-bottom: 2px; }
+    .cat-item span { font-size: 11.5px; color: var(--muted); }
+
+    /* 深度解析 */
+    .deep h3 {
+      font-size: 16px;
+      color: var(--brand);
+      margin: 20px 0 8px;
+    }
+    .deep h3:first-child { margin-top: 0; }
+    .deep p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+    .deep ul {
+      margin: 6px 0 12px 4px;
+    }
+    .deep ul li {
+      font-size: 13.5px;
+      color: var(--ink-soft);
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .deep ul li::before {
+      content: "";
+      position: absolute;
+      left: 4px; top: 13px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* 体验指南：编号步骤 */
+    .steps { counter-reset: step; }
+    .step-item {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .step-item:last-child { border-bottom: 0; }
+    .step-num {
+      flex: none;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body strong { display: block; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+    .step-body p { font-size: 12.8px; color: var(--muted); }
+
+    /* FAQ */
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+    details:last-child { border-bottom: 0; }
+    summary {
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      outline: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1;
+      transition: .18s;
+    }
+    details[open] summary::after { content: "–"; }
+    details p {
+      font-size: 13px;
+      color: var(--ink-soft);
+      padding: 8px 0 2px;
+      max-width: 680px;
+    }
+
+    /* 评论 */
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+    }
+    .review {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fbfcfd;
+    }
+    .review-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .review-name { font-size: 13px; font-weight: 700; color: var(--brand); }
+    .review-stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+    .review p { font-size: 12.8px; color: var(--ink-soft); line-height: 1.55; }
+
+    /* 资讯 */
+    .news-item {
+      display: flex;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .news-item:last-child { border-bottom: 0; }
+    .news-item img {
+      width: 96px; height: 64px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex: none;
+      background: #e8edf2;
+    }
+    .news-body h3 { font-size: 14px; color: var(--ink); margin-bottom: 3px; }
+    .news-body p { font-size: 12.5px; color: var(--muted); }
+    .news-date { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* 相关推荐标签 */
+    .rec-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .rec-tags a {
+      font-size: 13px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      color: var(--ink-soft);
+      background: #fbfcfd;
+      transition: .14s;
+    }
+    .rec-tags a:hover, .rec-tags a:focus-visible {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: #fff;
+      outline: none;
+    }
+
+    /* 榜单 */
+    .rank-list li {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .rank-list li:last-child { border-bottom: 0; }
+    .rank-no {
+      flex: none;
+      width: 22px;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .rank-list li:nth-child(1) .rank-no { color: var(--accent); }
+    .rank-list li:nth-child(2) .rank-no { color: #b8860b; }
+    .rank-list li:nth-child(3) .rank-no { color: #5f7688; }
+    .rank-name { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+    .rank-desc { font-size: 12px; color: var(--muted); margin-left: 4px; }
+    .rank-heat { margin-left: auto; font-size: 11.5px; color: var(--accent); font-weight: 700; }
+
+    /* 侧栏 */
+    .aside-col { min-width: 0; }
+    .side-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .side-card h2 {
+      font-size: 14px;
+      color: var(--brand);
+      margin-bottom: 10px;
+      letter-spacing: .3px;
+    }
+    .side-card h2 .accent-line {
+      display: inline-block;
+      width: 3px; height: 13px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-right: 7px;
+      vertical-align: -1px;
+    }
+    .hot-list li {
+      display: flex;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--line);
+      align-items: baseline;
+    }
+    .hot-list li:last-child { border-bottom: 0; }
+    .hot-list .h-rank {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--muted);
+      min-width: 16px;
+    }
+    .hot-list .h-rank.top { color: var(--accent); }
+    .hot-list .h-title { font-size: 12.8px; color: var(--ink-soft); line-height: 1.4; }
+    .hot-list .h-heat { margin-left: auto; font-size: 11px; color: var(--muted); flex: none; }
+
+    .update-stream li {
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .update-stream li:last-child { border-bottom: 0; }
+    .update-stream time { display: block; font-size: 11px; color: var(--muted); }
+
+    /* 搜索无结果 */
+    .no-result {
+      display: none;
+      padding: 18px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--brand);
+      color: #c6d2dc;
+      margin-top: 10px;
+    }
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 40px 20px 24px;
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 30px;
+    }
+    .footer-brand .brand-text { color: #f4f4f0; font-size: 22px; }
+    .footer-brand p {
+      font-size: 12.5px;
+      line-height: 1.7;
+      margin: 10px 0 0;
+      color: #a9b9c7;
+      max-width: 300px;
+    }
+    .footer-col h3 {
+      font-size: 13px;
+      color: #eef3f7;
+      margin-bottom: 10px;
+      letter-spacing: .5px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 12.5px;
+      color: #a9b9c7;
+      padding: 3px 0;
+      transition: .14s;
+    }
+    .footer-col a:hover, .footer-col a:focus-visible { color: #fff; outline: none; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding: 14px 20px;
+      max-width: 1360px;
+      margin: 0 auto;
+      font-size: 11.5px;
+      color: #8fa1b1;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 1080px) {
+      .layout { grid-template-columns: 170px minmax(0,1fr); }
+      .aside-col { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 18px; }
+      .side-card { margin-bottom: 0; }
+      .hero { grid-template-columns: 1fr; gap: 24px; }
+      .hero-visual { max-width: 560px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      .header-inner { height: auto; padding: 10px 14px; flex-wrap: wrap; gap: 10px; }
+      .main-nav { order: 3; width: 100%; padding-bottom: 2px; }
+      .header-search { width: 100%; }
+      .layout { grid-template-columns: 1fr; padding: 0 14px 40px; }
+      .channel-index { position: static; }
+      .channel-index ul { display: flex; flex-wrap: wrap; gap: 4px; }
+      .channel-index ul li a { padding: 5px 9px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .block { padding: 18px 16px; }
+      .hero { padding: 24px 14px 20px; }
+      .footer-inner { grid-template-columns: 1fr; padding: 28px 16px 18px; }
+      .news-item img { width: 76px; height: 52px; }
+      .update-list li { flex-wrap: wrap; gap: 4px; }
+      .update-summary { margin-left: 0; width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="notice-bar" role="status" aria-label="更新公告">
+    <span class="dot" aria-hidden="true"></span>
+    本周新增 27 条吃瓜档案 · 《夜航星》番外篇片场花絮 11 月 7 日解封
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/#hero" aria-label="51chigua 首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#f4c542" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="15" r="3" fill="#f4c542"/>
+            <path d="M12 5V2M5.5 7.5 3.5 5.5M18.5 7.5l2-2" stroke="#f4c542" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">51chigua</span>
+      </a>
+      <nav class="main-nav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#picks">精选吃瓜</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#reviews">瓜友评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#rank">热门榜单</a>
+      </nav>
+      <form class="header-search" role="search" id="searchForm" onsubmit="return false;">
+        <input type="search" id="searchInput" placeholder="搜索吃瓜条目…" aria-label="搜索吃瓜条目">
+        <button type="submit" id="searchBtn" aria-label="搜索">搜索</button>
+      </form>
+    </div>
+  </header>
+</div>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div>
+      <span class="hero-kicker">吃瓜资讯 · 每日追踪</span>
+      <h1 id="hero-title">51chigua</h1>
+      <p class="hero-desc">
+        汇聚娱乐圈八卦、网红动态、影视综艺花絮与社区热议话题，按条目整理看点、时间线与讨论焦点，适合喜欢追踪热点、想快速了解事件来龙去脉的网友翻阅。
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/#picks">浏览精选吃瓜</a>
+        <a class="btn-ghost" href="/#updates">查看最新动态</a>
+      </div>
+    </div>
+    <div class="hero-visual" role="img" aria-label="吃瓜热点速览面板">
+      <div class="hv-title">🔥 今日瓜田速报</div>
+      <div class="hv-item"><span class="hv-num">01</span><div class="hv-text">《夜航星》番外篇片场花絮<small>11 月 7 日解封 · 讨论量 4.2 万</small></div></div>
+      <div class="hv-item"><span class="hv-num">02</span><div class="hv-text">网红“阿柚”直播回应争议<small>昨晚 21:10 · 弹幕峰值 8.7 万</small></div></div>
+      <div class="hv-item"><span class="hv-num">03</span><div class="hv-text">《长风渡》第二季定档 11 月 15 日<small>官微发布 · 预约人数破 60 万</small></div></div>
+    </div>
+  </section>
+
+  <!-- 主内容区（三栏门户） -->
+  <div class="layout">
+
+    <!-- 左频道索引 -->
+    <aside class="channel-index" aria-label="频道索引">
+      <h2>频道索引</h2>
+      <ul>
+        <li><a href="/#overview">吃瓜领域概览</a></li>
+        <li><a href="/#picks">精选吃瓜推荐</a></li>
+        <li><a href="/#updates">最新动态速递</a></li>
+        <li><a href="/#categories">分类入口导航</a></li>
+        <li><a href="/#deep">深度解析正文</a></li>
+        <li><a href="/#guide">体验消费指南</a></li>
+        <li><a href="/#faq">常见问题解答</a></li>
+        <li><a href="/#reviews">瓜友评论精选</a></li>
+        <li><a href="/#news">相关资讯速览</a></li>
+        <li><a href="/#recs">延伸方向推荐</a></li>
+        <li><a href="/#rank">热门吃瓜榜单</a></li>
+      </ul>
+      <div class="side-note">共 11 个内容板块，按浏览节奏自上而下排列。</div>
+    </aside>
+
+    <!-- 中主内容 -->
+    <div class="main-col">
+
+      <!-- 1. 主题领域概览 -->
+      <section class="block" id="overview">
+        <div class="block-head"><h2>吃瓜领域概览</h2></div>
+        <div class="overview-text">
+          <p>吃瓜，是围绕娱乐圈、网红圈、影视综艺与社交平台热点展开的轻量信息消费。它涵盖的范围很广：从明星恋情、片场花絮、综艺剪辑争议，到网红带货翻车、直播回应、粉丝与工作室的隔空喊话，再到影视剧定档撤档、番位排序、番外彩蛋等具体事件，都是瓜田里的常见作物。</p>
+          <p>当前值得关注的方向主要集中在几类：一是<strong>剧集衍生话题</strong>，比如《夜航星》番外篇片场花絮在 11 月 7 日解封后，关于角色戏份删减的讨论持续升温；二是<strong>网红直播回应类</strong>，如“阿柚”昨晚直播对带货争议的说明，弹幕峰值一度达到 8.7 万；三是<strong>定档与撤档动态</strong>，《长风渡》第二季官宣 11 月 15 日上线，预约人数已破 60 万。</p>
+          <p>这些内容的价值不在于真假站队，而在于帮读者快速建立事件的时间线、人物关系和讨论焦点。同一件事往往有多个信源、多种说法，吃瓜的乐趣在于对比与辨别，而不是被动接收单一结论。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="block" id="picks">
+        <div class="block-head">
+          <h2>精选吃瓜推荐</h2>
+          <span class="more">6 个条目 · 按热度排序</span>
+        </div>
+        <div class="card-grid">
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/yuehangxing-fanwai01/400/300" width="400" height="300" loading="lazy" alt="夜航星番外篇片场花絮封面">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag hot">片场花絮</span><span class="tag">影视</span></div>
+              <h3 class="pick-title">《夜航星》番外篇片场花絮解封</h3>
+              <p class="pick-desc">11 月 7 日流出的 3 分钟花絮展示了未播出的角色互动片段，粉丝正逐帧比对正片删减内容。</p>
+              <div class="pick-meta"><span>热度 4.2 万</span><span class="score">9.1</span></div>
+            </div>
+          </article>
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/ayou-zhibo02/400/300" width="400" height="300" loading="lazy" alt="网红阿柚直播回应争议画面">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag hot">直播回应</span><span class="tag">网红</span></div>
+              <h3 class="pick-title">“阿柚”直播回应带货争议</h3>
+              <p class="pick-desc">昨晚 21:10 开播，对选品流程和售后问题逐条说明，弹幕峰值 8.7 万，评论区出现两极评价。</p>
+              <div class="pick-meta"><span>热度 8.7 万</span><span class="score">8.4</span></div>
+            </div>
+          </article>
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/changfengdu-s2-03/400/300" width="400" height="300" loading="lazy" alt="长风渡第二季定档海报">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag">定档</span><span class="tag">古装</span></div>
+              <h3 class="pick-title">《长风渡》第二季定档 11 月 15 日</h3>
+              <p class="pick-desc">官微发布定档预告，原班人马回归，预约人数已破 60 万，番位排序再度成为讨论焦点。</p>
+              <div class="pick-meta"><span>预约 60 万</span><span class="score">8.8</span></div>
+            </div>
+          </article>
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/wuyu-yanchuang04/400/300" width="400" height="300" loading="lazy" alt="雾雨演唱会谈话环节照片">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag hot">演唱会</span><span class="tag">音乐</span></div>
+              <h3 class="pick-title">“雾雨”演唱会谈话环节被剪</h3>
+              <p class="pick-desc">粉丝发现官方回放中一段 40 秒的谈话音轨被替换，后援会已发文要求释出完整版。</p>
+              <div class="pick-meta"><span>讨论 1.9 万</span><span class="score">7.6</span></div>
+            </div>
+          </article>
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/qingfeng-xuanjue05/400/300" width="400" height="300" loading="lazy" alt="青峰悬决综艺争议片段截图">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag">综艺</span><span class="tag">剪辑争议</span></div>
+              <h3 class="pick-title">《青峰悬决》第 6 期剪辑争议</h3>
+              <p class="pick-desc">选手投票环节前后镜头衔接被指不连贯，节目组 11 月 6 日发声明称将上线导演剪辑版。</p>
+              <div class="pick-meta"><span>讨论 3.1 万</span><span class="score">7.9</span></div>
+            </div>
+          </article>
+          <article class="pick-card">
+            <img src="https://picsum.photos/seed/luoyu-xieyi06/400/300" width="400" height="300" loading="lazy" alt="落羽协议剧照">
+            <div class="pick-body">
+              <div class="tag-row"><span class="tag">剧集</span><span class="tag">悬疑</span></div>
+              <h3 class="pick-title">《落羽协议》大结局彩蛋解读</h3>
+              <p class="pick-desc">结局片尾 15 秒的隐藏画面被观众逐帧分析，关于第二季伏笔的讨论帖已超过 2000 层。</p>
+              <div class="pick-meta"><span>讨论 2.4 万</span><span class="score">8.6</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 / 动态 -->
+      <section class="block" id="updates">
+        <div class="block-head"><h2>最新动态速递</h2><span class="more">10 条 · 截至 11 月 8 日</span></div>
+        <ul class="update-list">
+          <li><span class="update-time">今天 09:30</span><span class="update-name">《夜航星》番外篇</span><span class="update-summary">片场花絮完整版上线，时长 3 分 12 秒。</span></li>
+          <li><span class="update-time">今天 08:15</span><span class="update-name">“阿柚”直播回应</span><span class="update-summary">官方剪辑回放发布，评论区已开启精选。</span></li>
+          <li><span class="update-time">昨天 21:10</span><span class="update-name">“阿柚”直播争议说明</span><span class="update-summary">弹幕峰值 8.7 万，在线观看人数破 50 万。</span></li>
+          <li><span class="update-time">昨天 18:40</span><span class="update-name">《长风渡》第二季</span><span class="update-summary">定档预告播放量破 1200 万。</span></li>
+          <li><span class="update-time">11 月 7 日</span><span class="update-name">“雾雨”演唱会回放</span><span class="update-summary">谈话环节音轨被替换，后援会发声明。</span></li>
+          <li><span class="update-time">11 月 6 日</span><span class="update-name">《青峰悬决》节目组</span><span class="update-summary">声明将上线导演剪辑版，回应投票镜头争议。</span></li>
+          <li><span class="update-time">11 月 5 日</span><span class="update-name">《落羽协议》大结局</span><span class="update-summary">片尾彩蛋逐帧分析帖登上社区热榜。</span></li>
+          <li><span class="update-time">11 月 4 日</span><span class="update-name">“小鹿酱”账号解封</span><span class="update-summary">停更 12 天后首次发布动态，未说明原因。</span></li>
+          <li><span class="update-time">11 月 3 日</span><span class="update-name">《长风渡》番位讨论</span><span class="update-summary">官微评论区出现排序相关讨论，已关闭部分评论。</span></li>
+          <li><span class="update-time">11 月 2 日</span><span class="update-name">“雾雨”巡演加场</span><span class="update-summary">官宣 12 月加开两场，门票 11 月 10 日开售。</span></li>
+        </ul>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="block" id="categories">
+        <div class="block-head"><h2>分类入口导航</h2></div>
+        <div class="cat-grid">
+          <a class="cat-item" href="/#picks"><strong>明星恋情</strong><span>约会路透 · 同框细节</span></a>
+          <a class="cat-item" href="/#picks"><strong>片场花絮</strong><span>未播片段 · 番外彩蛋</span></a>
+          <a class="cat-item" href="/#picks"><strong>直播回应</strong><span>网红说明 · 弹幕热点</span></a>
+          <a class="cat-item" href="/#picks"><strong>定档撤档</strong><span>剧集排期 · 官宣节点</span></a>
+          <a class="cat-item" href="/#picks"><strong>综艺剪辑</strong><span>镜头争议 · 导演剪辑版</span></a>
+          <a class="cat-item" href="/#picks"><strong>番位排序</strong><span>署名争议 · 海报站位</span></a>
+          <a class="cat-item" href="/#picks"><strong>演唱会现场</strong><span>谈话环节 · 回放差异</span></a>
+          <a class="cat-item" href="/#picks"><strong>账号动态</strong><span>停更解封 · 发文节奏</span></a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析正文 -->
+      <section class="block deep" id="deep">
+        <div class="block-head"><h2>深度解析：吃瓜条目的类型差异与判断维度</h2></div>
+        <h3>剧集衍生类：花絮与正片的落差在哪</h3>
+        <p>《夜航星》番外篇片场花絮之所以引发讨论，核心在于花絮中出现的角色互动片段在正片里被剪掉或调换了顺序。观众对比时会关注三个具体点：一是镜头是否出现在正片同一场景中，二是台词是否被重新配音，三是背景道具是否与正片时间线一致。这类吃瓜的价值在于它提供了正片之外的创作痕迹，而不是单纯的“未播片段”噱头。</p>
+        <h3>直播回应类：说明与质疑的对应关系</h3>
+        <p>“阿柚”昨晚的直播回应属于典型的说明型吃瓜。判断这类内容时，可以看回应是否逐条对应了此前的质疑点：选品流程是否给出具体环节、售后问题是否说明处理时限、争议商品是否下架。回应中未涉及的部分，往往是后续讨论的延续点。弹幕峰值 8.7 万说明关注度高，但高关注不等于高可信，需要结合后续动作来看。</p>
+        <h3>定档与番位：官宣信息里藏着哪些细节</h3>
+        <p>《长风渡》第二季定档 11 月 15 日，官微预告中能提取的信息包括：原班人马回归、预约人数破 60 万、预告片时长 2 分 40 秒。番位排序之所以成为焦点，是因为海报上的署名顺序、预告片中的出场顺序、官微文案的@顺序三者往往并不一致，观众会逐一比对。这类吃瓜的看点在于官方物料之间的细微差异，而非单一结论。</p>
+        <h3>综艺剪辑类：导演剪辑版能解决什么</h3>
+        <p>《青峰悬决》第 6 期的剪辑争议集中在投票环节的镜头衔接上。节目组 11 月 6 日声明将上线导演剪辑版，这类回应的实际效果取决于补回的内容是否覆盖了争议点：如果补回的是完整的投票过程，争议会自然消解；如果只是补回少量反应镜头，讨论可能继续。吃瓜时可以把“声明”和“成片”分开看，前者是态度，后者是证据。</p>
+        <ul>
+          <li>花絮类：看镜头是否与正片场景对应，而非只看时长。</li>
+          <li>直播回应类：看质疑点是否被逐条回应，而非只看态度。</li>
+          <li>定档类：看海报、预告、文案三处信息是否一致。</li>
+          <li>剪辑争议类：看补回内容是否覆盖争议核心。</li>
+        </ul>
+      </section>
+
+      <!-- 6. 体验指南 / 消费路径 -->
+      <section class="block" id="guide">
+        <div class="block-head"><h2>体验指南：吃瓜消费的顺序与判断依据</h2></div>
+        <div class="steps">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-body"><strong>先看事件时间线</strong><p>从最早的爆料或官宣看起，再看后续回应，能避免被截断的信息带偏。例如先看 11 月 2 日的巡演加场，再看 11 月 7 日的回放争议。</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-body"><strong>区分“物料”与“解读”</strong><p>官微预告、片场花絮、直播回放属于物料；逐帧分析、评论截图、讨论帖属于解读。先看物料再看解读，判断会更有依据。</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-body"><strong>按类型选择投入时间</strong><p>定档撤档类信息量小，几分钟就能看完；剪辑争议和番位讨论往往有大量对比图，适合愿意花半小时以上逐条比对的人。</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div class="step-body"><strong>比较同类条目的更新节奏</strong><p>剧集衍生类通常随正片更新集中爆发，直播回应类多在事发后 24 小时内出现，综艺剪辑类则常在播出后 2—3 天发酵。了解节奏有助于判断何时该关注。</p></div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">5</span>
+            <div class="step-body"><strong>用讨论量而非单条评论判断热度</strong><p>单条高赞评论可能只是情绪表达，讨论帖的层数、不同观点的数量更能反映事件的持续讨论度。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="block" id="faq">
+        <div class="block-head"><h2>常见问题解答</h2></div>
+        <details>
+          <summary>《夜航星》番外篇和正片是什么关系？</summary>
+          <p>番外篇是正片之外的独立短片，片场花絮则记录了拍摄过程中的未采用镜头。11 月 7 日解封的花絮展示了部分未进入正片的角色互动片段，可以作为了解创作过程的参考，但不改变正片剧情。</p>
+        </details>
+        <details>
+          <summary>“阿柚”直播回应里哪些点值得重点关注？</summary>
+          <p>可以重点看选品流程的具体环节说明、售后问题的处理时限，以及争议商品是否下架。回应中未展开的部分，通常是后续讨论的延续点。</p>
+        </details>
+        <details>
+          <summary>《长风渡》第二季定档信息在哪里看最完整？</summary>
+          <p>官微发布的定档预告和海报是信息最集中的来源，预告中含上线日期、原班人马信息和预约数据。番位排序可以对比海报署名顺序与预告出场顺序。</p>
+        </details>
+        <details>
+          <summary>综艺剪辑争议一般多久会有回应？</summary>
+          <p>从近期案例看，节目组通常在播出后 1—3 天内发布声明，《青峰悬决》是在第 6 期播出后第 2 天回应。导演剪辑版的上线时间会更晚一些。</p>
+        </details>
+        <details>
+          <summary>第一次关注吃瓜内容，从哪类条目开始比较好？</summary>
+          <p>可以先从定档撤档和片场花絮两类入手，信息相对集中、争议点明确，不需要大量背景知识。熟悉之后再进入番位讨论和剪辑争议这类需要对比多方物料的类型。</p>
+        </details>
+        <details>
+          <summary>吃瓜时怎么判断一条信息的可信度？</summary>
+          <p>优先看是否有官方物料（官微、预告、回放）作为依据，其次看不同信源的描述是否一致。只有截图没有出处的信息，可以暂时存疑，等后续物料验证。</p>
+        </details>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="block" id="reviews">
+        <div class="block-head"><h2>瓜友评论精选</h2><span class="more">14 条</span></div>
+        <div class="review-grid">
+          <div class="review"><div class="review-head"><span class="review-name">瓜田里的猹</span><span class="review-stars">★★★★★</span></div><p>番外花絮里那个回眸镜头正片里确实没有，逐帧比对了好久，感觉删掉挺可惜的。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">晚风收信</span><span class="review-stars">★★★★☆</span></div><p>阿柚的回应态度还行，但选品流程说得有点笼统，希望后续有更具体的说明。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">橘子汽水</span><span class="review-stars">★★★★★</span></div><p>长风渡第二季终于定档了，预告片质感比第一季好，预约人数涨得也快。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">雾雨听风</span><span class="review-stars">★★★☆☆</span></div><p>演唱会回放换音轨这事有点迷，后援会发声明之后官方还没回应，先观望。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">青峰观察员</span><span class="review-stars">★★★★☆</span></div><p>导演剪辑版如果真能把投票过程补全，争议应该能消停，就怕只是补几个反应镜头。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">落羽拾光</span><span class="review-stars">★★★★★</span></div><p>大结局彩蛋那个 15 秒我看了五遍，第二季伏笔埋得挺明显的，坐等官宣。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">不吃香菜的猫</span><span class="review-stars">★★★☆☆</span></div><p>番位讨论每年都有，海报站位和预告出场顺序对不上也不是第一次了。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">小鹿乱撞</span><span class="review-stars">★★★★☆</span></div><p>小鹿酱解封后发的动态挺克制的，没解释原因，评论区倒是很热闹。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">深夜吃瓜组</span><span class="review-stars">★★★★★</span></div><p>昨晚蹲了阿柚直播全程，弹幕刷得飞快，后半段节奏才慢下来。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">数据搬运工</span><span class="review-stars">★★★★☆</span></div><p>60 万预约这个数字在定档当天涨得最快，后面几天增速明显放缓了。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">银杏树下</span><span class="review-stars">★★★☆☆</span></div><p>花絮解封时间点挺巧的，正好在正片完结后一个月，讨论度拉满。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">番茄不炒蛋</span><span class="review-stars">★★★★☆</span></div><p>青峰悬决这期投票镜头确实跳跃，我看的时候也愣了一下，希望剪辑版能补上。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">海盐芝士</span><span class="review-stars">★★★★★</span></div><p>雾雨巡演加场官宣得挺突然的，11 月 10 日开售，手速又要拼了。</p></div>
+          <div class="review"><div class="review-head"><span class="review-name">路人甲乙丙</span><span class="review-stars">★★★☆☆</span></div><p>吃瓜还是得看物料，光看讨论帖容易被带节奏，这是我的个人经验。</p></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="block" id="news">
+        <div class="block-head"><h2>相关资讯速览</h2></div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-yuehang07/600/400" width="600" height="400" loading="lazy" alt="夜航星番外篇花絮发布资讯配图">
+          <div class="news-body">
+            <h3>《夜航星》番外篇花絮完整版上线</h3>
+            <p>11 月 8 日上午发布，时长 3 分 12 秒，包含此前未曝光的角色互动片段。</p>
+            <div class="news-date">2026-11-08</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-ayou08/600/400" width="600" height="400" loading="lazy" alt="阿柚直播回应争议资讯配图">
+          <div class="news-body">
+            <h3>“阿柚”直播回应剪辑版发布</h3>
+            <p>官方回放已上线，评论区开启精选，争议商品页面显示“暂时下架”。</p>
+            <div class="news-date">2026-11-08</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-changfeng09/600/400" width="600" height="400" loading="lazy" alt="长风渡第二季定档资讯配图">
+          <div class="news-body">
+            <h3>《长风渡》第二季定档预告播放破 1200 万</h3>
+            <p>官微 11 月 7 日发布定档预告，评论区关于番位排序的讨论持续升温。</p>
+            <div class="news-date">2026-11-07</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-wuyu10/600/400" width="600" height="400" loading="lazy" alt="雾雨演唱会谈话环节争议资讯配图">
+          <div class="news-body">
+            <h3>“雾雨”演唱会谈话环节音轨被替换</h3>
+            <p>后援会 11 月 7 日发文要求释出完整版，截至 11 月 8 日官方尚未回应。</p>
+            <div class="news-date">2026-11-07</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-qingfeng11/600/400" width="600" height="400" loading="lazy" alt="青峰悬决导演剪辑版声明资讯配图">
+          <div class="news-body">
+            <h3>《青峰悬决》节目组宣布上线导演剪辑版</h3>
+            <p>11 月 6 日声明称将补全投票环节镜头，具体上线时间未定。</p>
+            <div class="news-date">2026-11-06</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="https://picsum.photos/seed/news-luoyu12/600/400" width="600" height="400" loading="lazy" alt="落羽协议大结局彩蛋资讯配图">
+          <div class="news-body">
+            <h3>《落羽协议》大结局彩蛋分析帖超 2000 层</h3>
+            <p>片尾 15 秒隐藏画面被逐帧解读，关于第二季伏笔的讨论登上社区热榜。</p>
+            <div class="news-date">2026-11-05</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="block" id="recs">
+        <div class="block-head"><h2>延伸方向推荐</h2></div>
+        <div class="rec-tags">
+          <a href="/#picks">正片删减镜头对比</a>
+          <a href="/#picks">直播选品流程解析</a>
+          <a href="/#picks">定档预告细节拆解</a>
+          <a href="/#picks">番位排序行业惯例</a>
+          <a href="/#picks">综艺剪辑时间线</a>
+          <a href="/#picks">演唱会回放音轨差异</a>
+          <a href="/#picks">账号停更与解封规律</a>
+          <a href="/#picks">结局彩蛋伏笔合集</a>
+        </div>
+      </section>
+
+      <!-- 11. 热门榜单 -->
+      <section class="block" id="rank">
+        <div class="block-head"><h2>热门吃瓜榜单</h2><span class="more">11 月 8 日更新</span></div>
+        <ul class="rank-list">
+          <li><span class="rank-no">1</span><span class="rank-name">“阿柚”直播回应带货争议</span><span class="rank-desc">网红 · 直播</span><span class="rank-heat">8.7 万</span></li>
+          <li><span class="rank-no">2</span><span class="rank-name">《夜航星》番外篇花絮解封</span><span class="rank-desc">影视 · 花絮</span><span class="rank-heat">4.2 万</span></li>
+          <li><span class="rank-no">3</span><span class="rank-name">《青峰悬决》第 6 期剪辑争议</span><span class="rank-desc">综艺 · 剪辑</span><span class="rank-heat">3.1 万</span></li>
+          <li><span class="rank-no">4</span><span class="rank-name">《落羽协议》大结局彩蛋解读</span><span class="rank-desc">剧集 · 悬疑</span><span class="rank-heat">2.4 万</span></li>
+          <li><span class="rank-no">5</span><span class="rank-name">“雾雨”演唱会谈话环节被剪</span><span class="rank-desc">音乐 · 现场</span><span class="rank-heat">1.9 万</span></li>
+          <li><span class="rank-no">6</span><span class="rank-name">《长风渡》第二季番位讨论</span><span class="rank-desc">剧集 · 定档</span><span class="rank-heat">1.6 万</span></li>
+          <li><span class="rank-no">7</span><span class="rank-name">“小鹿酱”账号解封后首发动态</span><span class="rank-desc">网红 · 账号</span><span class="rank-heat">1.2 万</span></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="aside-col" aria-label="辅助信息">
+      <div class="side-card">
+        <h2><span class="accent-line"></span>实时热榜</h2>
+        <ul class="hot-list">
+          <li><span class="h-rank top">1</span><span class="h-title">阿柚直播回应争议</span><span class="h-heat">8.7w</span></li>
+          <li><span class="h-rank top">2</span><span class="h-title">夜航星花絮解封</span><span class="h-heat">4.2w</span></li>
+          <li><span class="h-rank top">3</span><span class="h-title">青峰悬决剪辑争议</span><span class="h-heat">3.1w</span></li>
+          <li><span class="h-rank">4</span><span class="h-title">落羽协议彩蛋解读</span><span class="h-heat">2.4w</span></li>
+          <li><span class="h-rank">5</span><span class="h-title">雾雨演唱会回放</span><span class="h-heat">1.9w</span></li>
+          <li><span class="h-rank">6</span><span class="h-title">长风渡番位讨论</span><span class="h-heat">1.6w</span></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h2><span class="accent-line"></span>24 小时更新流</h2>
+        <ul class="update-stream">
+          <li>今天 09:30 夜航星番外篇花絮完整版上线<time>2026-11-08</time></li>
+          <li>今天 08:15 阿柚直播回应剪辑回放发布<time>2026-11-08</time></li>
+          <li>昨天 21:10 阿柚直播弹幕峰值 8.7 万<time>2026-11-07</time></li>
+          <li>昨天 18:40 长风渡第二季预告播放破 1200 万<time>2026-11-07</time></li>
+          <li>11 月 7 日 雾雨后援会要求释出完整版<time>2026-11-07</time></li>
+          <li>11 月 6 日 青峰悬决节目组声明<time>2026-11-06</time></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="no-result" id="noResult" role="status">没有找到匹配的吃瓜条目，换个关键词试试。</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-text">51chigua</span>
+      <p>聚焦娱乐圈、网红、影视综艺的吃瓜资讯聚合，按条目整理看点、时间线与讨论焦点。</p>
+    </div>
+    <div class="footer-col">
+      <h3>内容板块</h3>
+      <a href="/#overview">领域概览</a>
+      <a href="/#picks">精选吃瓜</a>
+      <a href="/#updates">最新动态</a>
+      <a href="/#deep">深度解析</a>
+    </div>
+    <div class="footer-col">
+      <h3>互动栏目</h3>
+      <a href="/#faq">常见问答</a>
+      <a href="/#reviews">瓜友评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#rank">热门榜单</a>
+    </div>
+    <div class="footer-col">
+      <h3>分类导航</h3>
+      <a href="/#categories">明星恋情</a>
+      <a href="/#categories">片场花絮</a>
+      <a href="/#categories">直播回应</a>
+      <a href="/#categories">定档撤档</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 51chigua · 内容聚合示例</span>
+    <span>部分内容为示例数据，仅用于展示页面结构</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var input = document.getElementById('searchInput');
+    var btn = document.getElementById('searchBtn');
+    var noResult = document.getElementById('noResult');
+    var main = document.querySelector('main');
+    var blocks = document.querySelectorAll('.block');
+
+    function doSearch() {
+      var q = input.value.trim().toLowerCase();
+      if (!q) {
+        blocks.forEach(function (b) { b.style.display = ''; });
+        noResult.style.display = 'none';
+        return;
+      }
+      var found = 0;
+      blocks.forEach(function (b) {
+        if (b.textContent.toLowerCase().indexOf(q) !== -1) {
+          b.style.display = '';
+          found++;
+        } else {
+          b.style.display = 'none';
+        }
+      });
+      noResult.style.display = found === 0 ? 'block' : 'none';
+    }
+
+    btn.addEventListener('click', doSearch);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+    });
+    input.addEventListener('input', function () {
+      if (!input.value.trim()) {
+        blocks.forEach(function (b) { b.style.display = ''; });
+        noResult.style.display = 'none';
+      }
+    });
+  })();
+</script>
+
+</body>
+                                                    </html>
